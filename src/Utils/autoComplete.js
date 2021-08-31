@@ -90,7 +90,6 @@ const AutoCompleteInput = (props) => {
 		<>
 			<Input
 				type="text"
-				mb="5"
 				name="Country"
 				value={activeValue}
 				onChange={(e) => {

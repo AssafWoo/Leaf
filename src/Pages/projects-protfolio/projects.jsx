@@ -15,6 +15,7 @@ import { getToken } from "../../Utils/getToken";
 const ProjectsMarketplace = () => {
 	const { projectsState, projectsDispatch } = useContext(GlobalContext);
 	const [projects, setProjects] = useState([]);
+	const [isDisabled, setIsDisabled] = useState(false);
 	const toast = useToast();
 
 	const projectsResponse = useFetch(
@@ -28,6 +29,7 @@ const ProjectsMarketplace = () => {
 	}, [projects, data]);
 
 	const onSave = async () => {
+		setIsDisabled(true);
 		let validToken = getToken();
 		let config = {
 			headers: {
@@ -47,14 +49,17 @@ const ProjectsMarketplace = () => {
 				duration: 1000,
 				isClosable: true,
 			});
+			setIsDisabled(false);
 		} catch (e) {
+			console.log(e.response.data.message);
 			toast({
-				title: "Failed, please try again.",
-				description: "",
+				title: e.response.data.message,
+				description: `Error code :${e.response.data.statusCode}`,
 				status: "error",
 				duration: 1000,
 				isClosable: true,
 			});
+			setIsDisabled(false);
 		}
 	};
 
@@ -73,6 +78,7 @@ const ProjectsMarketplace = () => {
 			<Button
 				left="90%"
 				type="submit"
+				disabled={isDisabled}
 				bg={LightBlue}
 				colorScheme={"blue"}
 				onClick={() => {

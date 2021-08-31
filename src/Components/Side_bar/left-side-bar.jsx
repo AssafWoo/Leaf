@@ -49,11 +49,11 @@ const MenuNames = [
 		link: "/profile",
 		icon: <SettingsIcon style={{ margin: "auto", display: "block" }} />,
 	},
-	{
-		name: "",
-		link: "/login",
-		icon: <FaPowerOff style={{ margin: "auto", display: "block" }} />,
-	},
+	// {
+	// 	name: "",
+	// 	link: "/login",
+	// 	icon: <FaPowerOff style={{ margin: "auto", display: "block" }} />,
+	// },
 ];
 
 const SideBar = ({ size }) => {
@@ -62,13 +62,10 @@ const SideBar = ({ size }) => {
 	const { _, userDispatch } = useContext(GlobalContext);
 
 	const handleClick = ({ name, children }) => {
-		if (name === "Exit") {
-			userDispatch(logoutUser);
-			history.push({
-				pathname: "/login",
-			});
-		}
-		setActiveItem(name);
+		userDispatch(logoutUser);
+		history.push({
+			pathname: "/login",
+		});
 	};
 	return (
 		<SideBarWrapper>
@@ -94,6 +91,17 @@ const SideBar = ({ size }) => {
 						</Item>
 					</Flex>
 				))}
+				{size ? (
+					<Flex key="login">
+						<Item size>
+							<StyledSpan style={{ cursor: "pointer" }} onClick={handleClick}>
+								<FaPowerOff style={{ margin: "auto", display: "block" }} />
+							</StyledSpan>
+						</Item>
+					</Flex>
+				) : (
+					""
+				)}
 			</ItemsNav>
 		</SideBarWrapper>
 	);

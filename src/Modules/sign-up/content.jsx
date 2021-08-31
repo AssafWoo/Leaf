@@ -3,7 +3,7 @@ import { MainGreen } from "../../Styles/colors";
 import { BoxSize, BreakLine, LeafIcon } from "../../Styles/styles";
 import LeafLogo from "../../Assets/images/leaf-logo-green-leaf.png";
 
-const RegisterContent = ({ handleRegister }) => {
+const RegisterContent = ({ handleRegister, isDisabled }) => {
 	return (
 		<BoxSize
 			isInvisible={true}
@@ -14,13 +14,10 @@ const RegisterContent = ({ handleRegister }) => {
 		>
 			<LeafIcon style={{ margin: "0" }} isSmall={true} src={LeafLogo} />
 			<BreakLine />
-			Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo voluptates
-			veniam numquam perferendis. Voluptate aut alias omnis, magnam similique
-			nam aliquam sequi quasi. Earum nihil architecto possimus accusantium,
-			voluptates dicta. Lorem, ipsum dolor sit amet consectetur adipisicing
-			elit. Quo voluptates veniam numquam
+			Should be a video here.
 			<Button
 				type="submit"
+				disabled={isDisabled}
 				w="100%"
 				mt="1rem"
 				bg={MainGreen}

@@ -36,8 +36,6 @@ function loginReducer(state, action) {
 				...state,
 				error: action.value,
 				isLoading: false,
-				email: "",
-				password: "",
 			};
 		default:
 			return state;
@@ -64,6 +62,7 @@ const Login = () => {
 				"http://localhost:3001/backoffice/auth/login",
 				{ email: email, password: password }
 			);
+			console.log(data);
 			toast({
 				title: "Welcome back",
 				description: "",
@@ -73,15 +72,13 @@ const Login = () => {
 			});
 			dispatchFunction({ type: "success" });
 			const accessToken = data.data.data.accessKey;
-			console.log(accessToken);
 			userDispatch(loginUser(accessToken));
 			history.push("/dashboard");
 		} catch (e) {
 			dispatchFunction({ type: "error", value: e });
-			dispatchFunction({ type: "field", field: "email", value: "" });
 			toast({
-				title: "Error Accured.",
-				description: "error",
+				title: e.response.data.message,
+				description: `Error code: ${e.response.data.statusCode}`,
 				status: "error",
 				duration: 1000,
 				isClosable: true,

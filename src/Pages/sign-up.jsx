@@ -9,9 +9,9 @@ import {
 	FormLabel,
 } from "@chakra-ui/form-control";
 import { Formik, Form, Field } from "formik";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { useHistory } from "react-router";
-import { Center, Heading, useToast } from "@chakra-ui/react";
+import { Center, FormHelperText, Heading, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { countries } from "../Mocks/countries";
 import { inputNames, secondaryInputNames } from "../Modules/sign-up/fields";
@@ -28,7 +28,7 @@ const Signup = () => {
 	// State and setter for search results
 	// State for search status (whether there is a pending API request)
 	const toast = useToast();
-
+	const [isDisabled, setIsDisabled] = useState(false);
 	const history = useHistory();
 	const {
 		Name,
@@ -50,6 +50,7 @@ const Signup = () => {
 
 	const handleRegister = async (e) => {
 		// only if the validation has passed the tests
+		setIsDisabled(true);
 		try {
 			const responseData = await axios.post(
 				"http://localhost:3001/backoffice/auth/register",
@@ -77,14 +78,13 @@ const Signup = () => {
 				pathname: "/login",
 			});
 		} catch (e) {
-			console.log(e.response.data.response.error_details);
 			dispatch({ type: "field", field: "Email", value: "" });
-
+			setIsDisabled(false);
 			toast({
-				title: e.response.data.response.error_details,
-				description: "Please try again.",
+				title: "Something went wrong",
+				description: "Please try again, enter valid answers",
 				status: "error",
-				duration: 4000,
+				duration: 40004,
 				isClosable: true,
 			});
 		}
@@ -143,7 +143,6 @@ const Signup = () => {
 																	{input.name}
 																</FormLabel>
 																<Input
-																	mb="5"
 																	type={input.type}
 																	name={input.name}
 																	onChange={(e) =>
@@ -157,7 +156,9 @@ const Signup = () => {
 																	border="none"
 																	bg={DarkTheme}
 																/>
-																<FormErrorMessage>'</FormErrorMessage>
+																<FormHelperText mb="5">
+																	{input.message}
+																</FormHelperText>{" "}
 															</FormControl>
 														)}
 													</Field>
@@ -183,8 +184,6 @@ const Signup = () => {
 																handleCountrySelect={handleCountrySelect}
 																suggestions={countries}
 															/>
-
-															<FormErrorMessage>'</FormErrorMessage>
 														</FormControl>
 													)}
 												</Field>
@@ -204,7 +203,6 @@ const Signup = () => {
 																	{input.name}
 																</FormLabel>
 																<Input
-																	mb="5"
 																	type="text"
 																	name={input.name}
 																	onChange={(e) =>
@@ -218,7 +216,9 @@ const Signup = () => {
 																	border="none"
 																	bg={DarkTheme}
 																/>
-																<FormErrorMessage>'</FormErrorMessage>
+																<FormHelperText mb="5">
+																	{input.message}
+																</FormHelperText>
 															</FormControl>
 														)}
 													</Field>
@@ -231,7 +231,10 @@ const Signup = () => {
 						</Flex>
 					</BoxSize>
 
-					<RegisterContent handleRegister={handleRegister} />
+					<RegisterContent
+						handleRegister={handleRegister}
+						isDisabled={isDisabled}
+					/>
 				</Flex>
 			</Center>
 		</Flex>
