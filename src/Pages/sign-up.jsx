@@ -3,11 +3,7 @@ import { Flex } from "@chakra-ui/layout";
 import { DarkTheme } from "../Styles/colors";
 import { BoxSize, SubHeader } from "../Styles/styles";
 import { Input } from "@chakra-ui/input";
-import {
-	FormControl,
-	FormErrorMessage,
-	FormLabel,
-} from "@chakra-ui/form-control";
+import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Formik, Form, Field } from "formik";
 import { useReducer, useState } from "react";
 import { useHistory } from "react-router";
@@ -84,7 +80,7 @@ const Signup = () => {
 				title: "Something went wrong",
 				description: "Please try again, enter valid answers",
 				status: "error",
-				duration: 40004,
+				duration: 4000,
 				isClosable: true,
 			});
 		}

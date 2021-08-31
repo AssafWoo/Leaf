@@ -8,6 +8,7 @@ import PaymentForm from "../Modules/billing/billing";
 import OffsetDetails from "../Modules/settings/offset-details";
 import { Black, LightBlue } from "../Styles/colors";
 import AccountDetails from "../Modules/settings/account-details";
+import { useHistory } from "react-router";
 
 const tabsStyle = {
 	color: "white",
@@ -21,6 +22,9 @@ const tabsStyle = {
 const Settings = () => {
 	const { userState } = useContext(GlobalContext);
 	const [status, setStatus] = useState("");
+	const history = useHistory();
+	const [indexToShow, setIndexToShow] = useState(0);
+
 	const handleSubmit = ({ status }) => {
 		setStatus(status);
 	};
@@ -30,12 +34,20 @@ const Settings = () => {
 			<Heading {...SubHeader}>Your Profile</Heading>
 			<BreakLine />
 			<BoxSize flexSize="5" isInvisible={true}>
-				<Tabs colorScheme="cyan">
+				<Tabs colorScheme="cyan" defaultIndex={0}>
 					<TabList>
-						<Tab _selected={tabsStyle}>Company Settings</Tab>
-						<Tab _selected={tabsStyle}>Account Settings</Tab>
-						<Tab _selected={tabsStyle}>Offsets Settings</Tab>
-						<Tab _selected={tabsStyle}>Billing</Tab>
+						<Tab index={0} _selected={tabsStyle}>
+							Company Settings
+						</Tab>
+						<Tab index={1} _selected={tabsStyle}>
+							Account Settings
+						</Tab>
+						<Tab index={2} _selected={tabsStyle}>
+							Offsets Settings
+						</Tab>
+						<Tab index={3} _selected={tabsStyle}>
+							Billing
+						</Tab>
 					</TabList>
 					<TabPanels>
 						<TabPanel>

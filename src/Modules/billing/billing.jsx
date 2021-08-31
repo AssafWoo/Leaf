@@ -48,8 +48,6 @@ const PaymentForm = () => {
 	const [state, dispatchFunction] = useReducer(paymentReducer, initialState);
 	const { name, number, expiry, cvc, focus, error, isLoading } = state;
 
-	console.log(name);
-
 	return (
 		<Flex>
 			<BoxSize isInvisible={false} flexSize="5">

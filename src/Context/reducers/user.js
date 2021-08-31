@@ -26,9 +26,12 @@ const reducer = (state, action) => {
 				...state,
 				userData: {
 					...state.userData,
-					name: globalStore.merchant.name,
+					accountOwner: globalStore.username,
+					name: globalStore.username,
+					company: globalStore.merchant.name,
 					email: globalStore.email,
 					accessKey: globalStore.accessKey,
+					address: globalStore.merchant.addressLocation.country,
 				},
 				loggedIn: true,
 			};

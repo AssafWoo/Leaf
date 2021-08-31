@@ -14,7 +14,7 @@ const SingleUser = ({ desiredPhoto }) => {
 	}
 	return (
 		<FaUser
-			size="2.5rem"
+			size="2rem"
 			style={{
 				border: `1px solid ${MainGreen}`,
 				padding: ".4rem",

@@ -114,33 +114,6 @@ const AccountDetails = ({ accountDetails }) => {
 									)}
 								</Field>
 							</BoxSize>
-							<BoxSize flexSize="1" isInvisible={true}>
-								<Field>
-									{({ field, form }) => (
-										<FormControl id="email">
-											<FormLabel
-												color="white"
-												fontSize="1.1rem"
-												textAlign="left"
-												pb="2"
-											>
-												Email
-											</FormLabel>
-											<Input
-												disabled={!editable}
-												background={DarkerTheme}
-												border="none"
-												name="email"
-												value={values.email}
-												onChange={handleChange}
-												onBlur={handleBlur}
-												mb="5"
-											/>
-											<FormErrorMessage>'</FormErrorMessage>
-										</FormControl>
-									)}
-								</Field>
-							</BoxSize>
 						</Flex>
 					</Form>
 				)}
@@ -233,7 +206,7 @@ const AccountDetails = ({ accountDetails }) => {
 														textAlign="left"
 														pb="2"
 													>
-														New assword
+														New password
 													</FormLabel>
 													<Input
 														background={DarkerTheme}
