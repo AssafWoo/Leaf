@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 import { Heading } from "@chakra-ui/layout";
 import { Flex, BoxSize, BreakLine, Parag } from "../../Styles/styles";
-import SingleUser from "../../Components/UserAvatar/SingelUser";
-import { DarkerTheme, DarkTheme, LightBlue } from "../../Styles/colors";
+import { ShadowEffect } from "../../Styles/effects";
+import { DarkerTheme, DarkTheme, MainGreen } from "../../Styles/colors";
 import { useGetTime } from "../../Utils/useGetTime";
 import BarsChart from "../../Components/Charts/bar";
 import { useScreenSize } from "../../Utils/useScreenSize";
 import { SwitchToggleButton } from "../../Components/Switch/switch";
-import BlogCard from "../../Components/Cards/blog_card";
-import VolunteerCard from "../../Components/Cards/volunteer_card";
+// import BlogCard from "../../Components/Cards/blog_card";
+// import VolunteerCard from "../../Components/Cards/volunteer_card";
 import TableTemplate from "../../Components/Table/table-template";
 import { transactionsColumns } from "../../Components/Table/data-stracture";
 import { UserType } from "../../interfaces/user";
@@ -77,7 +77,7 @@ const DashboardContent = ({
 						<BoxSize
 							flexSize="1"
 							isInvisible={true}
-							style={{ border: `2px solid ${DarkTheme}` }}
+							style={{ border: `2px solid ${DarkTheme}`}}
 						>
 							<Heading fontWeight="300" textAlign="center" fontSize="3rem">
 								{user?.userData?.treesEquilavant}
@@ -89,7 +89,7 @@ const DashboardContent = ({
 						<BoxSize
 							flexSize="1"
 							isInvisible={true}
-							style={{ border: `2px solid ${DarkTheme}` }}
+							style={{ border: `2px solid ${DarkTheme}`, background:MainGreen, ShadowEffect }}
 						>
 							<Heading fontWeight="300" textAlign="center" fontSize="3rem">
 								{user?.userData?.totalCO2Saved}
@@ -101,7 +101,7 @@ const DashboardContent = ({
 						<BoxSize
 							flexSize="1"
 							isInvisible={true}
-							style={{ border: `2px solid ${DarkTheme}` }}
+							style={{ border: `2px solid ${DarkTheme}`, ShadowEffect }}
 						>
 							<Heading fontWeight="300" textAlign="center" fontSize="3rem">
 								{user?.userData?.credits}$

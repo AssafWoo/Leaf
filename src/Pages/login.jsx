@@ -67,7 +67,7 @@ const Login = () => {
 				title: "Welcome back",
 				description: "",
 				status: "success",
-				duration: 1000,
+				duration: 3000,
 				isClosable: true,
 			});
 			dispatchFunction({ type: "success" });
