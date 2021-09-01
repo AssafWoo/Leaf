@@ -65,7 +65,7 @@ const CompanyDetails = ({ companyDetails }) => {
 			<Formik
 				initialValues={{
 					name: companyDetails.company,
-					companyAddress: companyDetails.address,
+					companyAddress: companyDetails.address.country,
 					email: companyDetails.email,
 					URL: companyDetails.siteURL,
 				}}

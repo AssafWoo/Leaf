@@ -4,7 +4,6 @@ export interface TransactionType {
     country:string,
     status:string,
     type:string,
-    icon:string,
     amountCo2:number,
     amountDollars:number,
     date:{

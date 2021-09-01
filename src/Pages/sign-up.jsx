@@ -165,24 +165,6 @@ const Signup = () => {
 												flexSize="5"
 												style={{ padding: "1.5rem", background: "transparent" }}
 											>
-												<Field>
-													{({ field, form }) => (
-														<FormControl id={"Country"} isRequired={true}>
-															<FormLabel
-																color="white"
-																fontSize="1.1rem"
-																textAlign="left"
-																pb="2"
-															>
-																Country
-															</FormLabel>
-															<Autocomplete
-																handleCountrySelect={handleCountrySelect}
-																suggestions={countries}
-															/>
-														</FormControl>
-													)}
-												</Field>
 												{secondaryInputNames.map((input) => (
 													<Field>
 														{({ field, form }) => (
@@ -219,6 +201,24 @@ const Signup = () => {
 														)}
 													</Field>
 												))}
+												<Field>
+													{({ field, form }) => (
+														<FormControl id={"Country"} isRequired={true}>
+															<FormLabel
+																color="white"
+																fontSize="1.1rem"
+																textAlign="left"
+																pb="2"
+															>
+																Country
+															</FormLabel>
+															<Autocomplete
+																handleCountrySelect={handleCountrySelect}
+																suggestions={countries}
+															/>
+														</FormControl>
+													)}
+												</Field>
 											</BoxSize>
 										</Flex>
 									</Form>

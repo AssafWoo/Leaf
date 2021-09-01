@@ -17,15 +17,18 @@ export const inputNames = [
 		type: "password",
 		message: "Must be longer then 3 characters",
 	},
-	{ name: "Company", required: true, type: "text", message: "" },
 ];
 export const secondaryInputNames = [
-	{ name: "State", required: false, type: "text", message: "" },
-	{ name: "City", required: false, type: "text", message: "" },
 	{
 		name: "Site_URL",
 		required: false,
 		type: "text",
 		message: "Must be a valid Url address",
+	},
+	{
+		name: "Company",
+		required: true,
+		type: "text",
+		message: "Full company name",
 	},
 ];
