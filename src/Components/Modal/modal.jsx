@@ -39,10 +39,9 @@ const ModalComponent = ({
 					transform={"translate(-50%, -50%) !important"}
 					style={{ position: "absolute", top: "50%", left: "50%", margin: "0" }}
 				>
-					<BreakLine />
 					<ModalHeader>ID: {item.id}</ModalHeader>
 					<ModalCloseButton />
-					<ModalBody>{content}</ModalBody>
+					<ModalBody display="contents">{content}</ModalBody>
 					{goToActionButton === "empty" ? (
 						""
 					) : (

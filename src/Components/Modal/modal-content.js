@@ -6,13 +6,7 @@ const ModalContent = (props) => {
 	return (
 		<Flex style={{ alignItems: "stretch" }}>
 			<Flex>
-				<BoxSize
-					isInvisible={true}
-					style={{
-						background: DarkTheme,
-					}}
-					flexSize="5"
-				>
+				<BoxSize isInvisible={true} flexSize="5">
 					<Heading fontSize="1rem" color="white" fontWeight="400">
 						Name:
 					</Heading>
@@ -27,13 +21,9 @@ const ModalContent = (props) => {
 						{props.offset_name}
 					</Parag>
 				</BoxSize>
-				<BoxSize
-					isInvisible={true}
-					style={{
-						background: DarkTheme,
-					}}
-					flexSize="5"
-				>
+			</Flex>
+			<Flex>
+				<BoxSize isInvisible={true} flexSize="5">
 					<Heading fontSize="1rem" color="white" fontWeight="400">
 						Date:
 					</Heading>
@@ -48,13 +38,7 @@ const ModalContent = (props) => {
 						{props.created_at}
 					</Parag>
 				</BoxSize>
-				<BoxSize
-					isInvisible={true}
-					style={{
-						background: DarkTheme,
-					}}
-					flexSize="5"
-				>
+				<BoxSize isInvisible={true} flexSize="5">
 					<Heading fontSize="1rem" color="white" fontWeight="400">
 						Location:
 					</Heading>
@@ -71,15 +55,9 @@ const ModalContent = (props) => {
 				</BoxSize>
 			</Flex>
 			<Flex>
-				<BoxSize
-					isInvisible={true}
-					style={{
-						background: DarkTheme,
-					}}
-					flexSize="3"
-				>
+				<BoxSize isInvisible={true} flexSize="3">
 					<Heading fontSize="1rem" color="white" fontWeight="400">
-						Amount($):
+						Total:
 					</Heading>
 					<Parag
 						style={{
@@ -89,35 +67,27 @@ const ModalContent = (props) => {
 							color: MainGreen,
 						}}
 					>
-						{props.amountDollars}
+						${props.amountDollars}
 					</Parag>
 				</BoxSize>
-				<BoxSize
-					isInvisible={true}
-					style={{ background: MainGreen, color: "black" }}
-					flexSize="2"
-				>
-					<Heading fontSize="1rem" color="black" fontWeight="400">
-						Amount(CO2):
+				<BoxSize isInvisible={true} flexSize="2">
+					<Heading fontSize="1rem" color="white" fontWeight="400">
+						Mass:
 					</Heading>
 					<Parag
 						style={{
 							textAlign: "left",
 							fontSize: "1.2rem",
 							fontWeight: "500",
-							color: "black",
+							color: MainGreen,
 						}}
 					>
-						{props.amountCo2}
+						{props.amountCo2}kg
 					</Parag>
 				</BoxSize>
 			</Flex>
 			<Flex>
-				<BoxSize
-					isInvisible={true}
-					style={{ background: DarkTheme }}
-					flexSize="3"
-				>
+				<BoxSize isInvisible={true} flexSize="3">
 					<Heading fontSize="1rem" color="white" fontWeight="400" mb="1rem">
 						Instrument Type:
 					</Heading>
@@ -132,11 +102,7 @@ const ModalContent = (props) => {
 						{props.offset_type}
 					</Parag>
 				</BoxSize>
-				<BoxSize
-					isInvisible={true}
-					style={{ background: DarkTheme }}
-					flexSize="5"
-				>
+				<BoxSize isInvisible={true} flexSize="5">
 					<Heading fontSize="1rem" color="white" fontWeight="400">
 						Registry Name:
 					</Heading>
