@@ -4,7 +4,7 @@ import { DarkerTheme, MainGreen, MainRed } from "../../Styles/colors";
 export const customStyles = {
 	headCells: {
 		style: {
-			background: "#1b2537",
+			background: "#0d1117",
 			color: "white",
 			fontSize: "1.1rem",
 			"&:hover": {
@@ -14,7 +14,7 @@ export const customStyles = {
 	},
 	cells: {
 		style: {
-			background: "#1b2537",
+			background: "#0d1117",
 			color: "white",
 			width: "1rem !important",
 			fontSize: ".9rem",
@@ -22,13 +22,13 @@ export const customStyles = {
 	},
 	nav: {
 		style: {
-			background: "#1b2537",
+			background: "#0d1117",
 			color: "white",
 		},
 	},
 	row: {
 		style: {
-			background: "#1b2537",
+			background: "#0d1117",
 			color: "white",
 		},
 	},

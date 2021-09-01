@@ -1,8 +1,9 @@
 export const OldDarkTheme = "#2c3c5b";
 
-export const DarkTheme = "#233048";
-export const OldDarkerTheme = "#233048";
-export const DarkerTheme = "#1b2537 ";
+export const DarkerThemeOriginal = "#233048";
+export const DarkTheme = "#1b2537";
+
+export const DarkerTheme = "#0d1117 ";
 
 export const Black = "#0D121B";
 export const MainGreen = "#48bc94";
