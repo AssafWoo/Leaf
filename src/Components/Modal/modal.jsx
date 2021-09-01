@@ -28,14 +28,9 @@ const ModalComponent = ({
 
 	return (
 		<>
-			<Button
-				background={MainGreen}
-				color="white"
-				onClick={onOpen}
-				colorScheme="blue"
-			>
+			<p style={{ cursor: "pointer" }} onClick={onOpen}>
 				{openButtonContent}
-			</Button>
+			</p>
 			<Modal isOpen={isOpen} onClose={onClose} style={{ SlideEffect }}>
 				<ModalOverlay />
 				<ModalContent

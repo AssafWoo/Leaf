@@ -6,7 +6,7 @@ export const customStyles = {
 		style: {
 			background: "#233048",
 			color: "white",
-			fontSize: "1rem",
+			fontSize: "1.1rem",
 			"&:hover": {
 				color: "#6db966",
 			},
@@ -17,6 +17,7 @@ export const customStyles = {
 			background: "#233048",
 			color: "white",
 			width: "1rem !important",
+			fontSize: ".9rem",
 		},
 	},
 	nav: {
@@ -42,6 +43,9 @@ export const TableWrapper = styled.div`
 	background: ${DarkerTheme} !important;
 	border: none;
 	width: 100%;
+	[data-value="allowRowEvents"] {
+		color: "green";
+	}
 	.kVlSIs {
 		background: transparent;
 		color: white;

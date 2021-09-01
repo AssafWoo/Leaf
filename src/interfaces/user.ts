@@ -10,6 +10,7 @@ export interface UserType {
         treesEquilavant:number;
         siteURL:string;
         accessKey:string;
+        address:string;
     };
     loggedIn:boolean;
     authKey:string;

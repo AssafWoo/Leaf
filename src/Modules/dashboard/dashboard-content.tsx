@@ -77,7 +77,7 @@ const DashboardContent = ({
 						<BoxSize
 							flexSize="1"
 							isInvisible={true}
-							style={{ border: `4px solid ${DarkTheme}` }}
+							style={{ border: `2px solid ${DarkTheme}` }}
 						>
 							<Heading fontWeight="300" textAlign="center" fontSize="3rem">
 								{user?.userData?.treesEquilavant}
@@ -89,7 +89,7 @@ const DashboardContent = ({
 						<BoxSize
 							flexSize="1"
 							isInvisible={true}
-							style={{ border: `4px solid ${DarkTheme}` }}
+							style={{ border: `2px solid ${DarkTheme}` }}
 						>
 							<Heading fontWeight="300" textAlign="center" fontSize="3rem">
 								{user?.userData?.totalCO2Saved}
@@ -101,7 +101,7 @@ const DashboardContent = ({
 						<BoxSize
 							flexSize="1"
 							isInvisible={true}
-							style={{ border: `4px solid ${DarkTheme}` }}
+							style={{ border: `2px solid ${DarkTheme}` }}
 						>
 							<Heading fontWeight="300" textAlign="center" fontSize="3rem">
 								{user?.userData?.credits}$
@@ -117,7 +117,7 @@ const DashboardContent = ({
 					flexSize="3"
 					style={{
 						background: DarkerTheme,
-						border: `4px solid ${DarkTheme}`,
+						border: `2px solid ${DarkTheme}`,
 					}}
 				>
 					<Flex>
@@ -137,7 +137,7 @@ const DashboardContent = ({
 					flexSize="3"
 					style={{
 						background: DarkerTheme,
-						border: `4px solid ${DarkTheme}`,
+						border: `2px solid ${DarkTheme}`,
 					}}
 				>
 					<Heading fontWeight="300" textAlign="left" fontSize="1.4rem">
@@ -151,7 +151,7 @@ const DashboardContent = ({
 					/> : <Spinner />}
 				</BoxSize>
 
-				<Flex>
+				{/* <Flex>
 					<BoxSize flexSize="3" style={{ background: LightBlue }}>
 						<Heading fontWeight="300" textAlign="left" fontSize="1.4rem">
 							Volunteer
@@ -166,7 +166,7 @@ const DashboardContent = ({
 						<BreakLine />
 						<BlogCard />
 					</BoxSize>
-				</Flex>
+				</Flex> */}
 			</BoxSize>
 		</>
 	);

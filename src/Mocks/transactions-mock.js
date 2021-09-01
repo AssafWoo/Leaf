@@ -16,62 +16,61 @@ export const OFFSET_TYPE = {
 	},
 };
 
-export const transactionsData = [
+export const mockTransactionsData = [
 	{
 		name: "Amazon Tribe",
 		location: "Brazil",
-		status: "Success",
+		status: "Placed",
 		orders: "",
 		type: "Hydraloic pumps",
 		icon: OFFSET_TYPE.WATER.icon,
 		amountCo2: "170",
 		amountDollars: 2,
-		date: "10/5/21",
+		created_at: "10/5/21",
 		action: "...",
-		id: "12312412354315",
+		id: "789",
 	},
 	{
 		name: "AA",
 		location: "Peru",
 
-		status: "Success",
+		status: "Placed",
 		orders: "",
 		type: "Forestation",
 		icon: OFFSET_TYPE.AIR.icon,
 
 		amountCo2: "190",
 		amountDollars: 1,
-		date: "10/5/21",
+		created_at: "10/5/21",
 		action: "...",
-		id: "543654363464",
+		id: "456",
 	},
 	{
 		name: "Indian waterfall",
 		location: "India",
 
-		status: "Success",
+		status: "Proccessing",
 		orders: "",
 		type: OFFSET_TYPE.FORREST.name,
 		icon: OFFSET_TYPE.FORREST.icon,
 
 		amountCo2: "124",
 		amountDollars: 5,
-		date: "14/4/21",
+		created_at: "14/4/21",
 		action: "...",
-		id: "543645763421",
+		id: "123",
 	},
 	{
 		name: "Solar panels in Argentina",
 		location: "Argentina",
-
-		status: "Failed",
+		status: "Retired",
 		orders: "",
 		type: "Hydraloic pumps",
 		icon: OFFSET_TYPE.WATER.icon,
 		amountCo2: "168",
 		amountDollars: 16,
-		date: "12/4/21",
+		created_at: "12/4/21",
 		action: "...",
-		id: "34634562165345762",
+		id: "012",
 	},
 ];

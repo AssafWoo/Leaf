@@ -13,6 +13,7 @@ export const userInitialState: UserType = {
         treesEquilavant:0,
         siteURL:'',
         accessKey:'',
+        address:''
     },
     loggedIn:false,
     authKey:'',

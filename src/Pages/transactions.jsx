@@ -8,6 +8,7 @@ import { GlobalContext } from "../Context/global/global-context";
 import useFetch from "../Utils/useFetch";
 import { setTransactions } from "../Context/actions/transactions";
 import { Spinner } from "@chakra-ui/react";
+import { mockTransactionsData } from "../Mocks/transactions-mock";
 
 const TransactionsComponent = () => {
 	const { transactionsState, transactionsDispatch } = useContext(GlobalContext);
@@ -38,13 +39,14 @@ const TransactionsComponent = () => {
 				isInvisible={false}
 				style={{
 					background: DarkerTheme,
-					border: `4px solid ${DarkTheme}`,
+					border: `2px solid ${DarkTheme}`,
 					borderRadius: "15px",
 				}}
 			>
 				{transactionsData ? (
 					<TableTemplate
-						tableData={transactionsState.allTransactions}
+						// tableData={transactionsState.allTransactions}
+						tableData={mockTransactionsData}
 						columnsType={transactionsColumns}
 					/>
 				) : (
