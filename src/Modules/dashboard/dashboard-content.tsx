@@ -50,13 +50,13 @@ const DashboardContent = ({
 							fontWeight="300"
 							color="white"
 						>
-							Howdy <b>{user?.userData?.name}</b>, {CurrentTime}
+							Howdy {user?.userData?.name}, {CurrentTime}
 						</Heading>
 						<p style={{ textAlign: "left", color: "white" }}>
-							Lets change the world!
+							Your'e a unique Leaf
 						</p>
 					</BoxSize>
-					{screenSize === "3-cols" ? (
+					{/* {screenSize === "3-cols" ? (
 						<BoxSize
 							flexSize="3"
 							isInvisible={true}
@@ -66,11 +66,11 @@ const DashboardContent = ({
 						</BoxSize>
 					) : (
 						""
-					)}
+					)} */}
 				</Flex>
 				<BoxSize
 					flexSize="3"
-					style={{ textAlign: "center" }}
+					style={{ textAlign: "center",  padding:'0' }}
 					isInvisible={true}
 				>
 					<Flex style={{ alignItems: "stretch" }}>
@@ -112,7 +112,7 @@ const DashboardContent = ({
 						</BoxSize>
 					</Flex>
 				</BoxSize>
-
+				<BreakLine />
 				<BoxSize
 					flexSize="3"
 					style={{
@@ -131,7 +131,7 @@ const DashboardContent = ({
 					<BreakLine />
 					<BarsChart data={dashboardData} />
 				</BoxSize>
-
+				<BreakLine />
 				<BoxSize
 					ref={myStackedRef}
 					flexSize="3"

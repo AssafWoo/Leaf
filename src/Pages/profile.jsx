@@ -50,19 +50,19 @@ const Settings = () => {
 						</Tab>
 					</TabList>
 					<TabPanels>
-						<TabPanel>
+						<TabPanel paddingLeft="0" paddingRight="0">
 							<CompanyDetails
 								handleSubmit={handleSubmit}
 								companyDetails={userState.userData}
 							/>
 						</TabPanel>
-						<TabPanel>
+						<TabPanel paddingLeft="0" paddingRight="0">
 							<AccountDetails accountDetails={userState.userData} />
 						</TabPanel>
-						<TabPanel>
+						<TabPanel paddingLeft="0" paddingRight="0">
 							<OffsetDetails />
 						</TabPanel>
-						<TabPanel id="billing">
+						<TabPanel paddingLeft="0" paddingRight="0">
 							<Parag>Your billing information</Parag>
 							<BreakLine />
 							<PaymentForm />

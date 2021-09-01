@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import {
+	LeafGreen1,
+	LeafGreen2,
+	LeafGreen3,
+	LeafGreen4,
+	LeafRed,
 	MainBlue,
 	MainGreen,
 	MainGreenBlue,
-	MainPink,
 	MainPurple,
-	MainYellow,
 } from "./colors";
 
 export const ShadowEffect = `
@@ -109,7 +112,7 @@ export const CirclesEffect = styled.div`
 		animation-duration: 20s;
 		border-radius: 50%;
 		border-top-left-radius: 0 !important;
-		background: ${MainGreen};
+		background: ${LeafGreen1};
 	}
 
 	.circles li:nth-child(2) {
@@ -120,7 +123,7 @@ export const CirclesEffect = styled.div`
 		animation-duration: 25s;
 		border-radius: 50%;
 		border-top-left-radius: 0 !important;
-		background: ${MainPink};
+		background: ${LeafGreen2};
 	}
 
 	.circles li:nth-child(3) {
@@ -131,7 +134,7 @@ export const CirclesEffect = styled.div`
 		animation-duration: 20s;
 		border-radius: 50%;
 		border-top-left-radius: 0 !important;
-		background: ${MainBlue};
+		background: ${LeafGreen3};
 	}
 
 	.circles li:nth-child(4) {
@@ -142,7 +145,7 @@ export const CirclesEffect = styled.div`
 		animation-duration: 15s;
 		border-radius: 50%;
 		border-top-left-radius: 0 !important;
-		background: ${MainGreenBlue};
+		background: ${LeafGreen4};
 	}
 
 	.circles li:nth-child(5) {
@@ -153,7 +156,7 @@ export const CirclesEffect = styled.div`
 		animation-duration: 20s;
 		border-radius: 50%;
 		border-top-left-radius: 0 !important;
-		background: ${MainYellow};
+		background: ${LeafRed};
 	}
 
 	.circles li:nth-child(6) {
@@ -186,7 +189,7 @@ export const CirclesEffect = styled.div`
 		animation-duration: 35s;
 		border-radius: 50%;
 		border-top-left-radius: 0 !important;
-		background: ${MainYellow};
+		background: ${MainGreenBlue};
 	}
 
 	@keyframes animate {

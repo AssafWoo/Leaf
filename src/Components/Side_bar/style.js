@@ -7,7 +7,6 @@ export const SideBarWrapper = styled.div`
 	z-index: 2;
 	background-color: ${DarkTheme};
 	padding-top: 20px;
-	border-top-right-radius: 15px;
 	grid-area: sidebar;
 	${ShadowEffect};
 `;
@@ -52,7 +51,7 @@ export const Item = styled.div`
 		color: white;
 		${TransitionEffect};
 		/* border-radius:50% 50% 50% 50% / 100% 1% 99% 0%; */
-		border-radius: 10px;
+		border-radius: 5px;
 		width: 100%;
 	}
 `;

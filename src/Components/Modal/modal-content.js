@@ -17,9 +17,7 @@ const ModalContent = (props) => {
 							fontWeight: "500",
 							color: MainGreen,
 						}}
-					>
-						{props.offset_name}
-					</Parag>
+					></Parag>
 				</BoxSize>
 			</Flex>
 			<Flex>

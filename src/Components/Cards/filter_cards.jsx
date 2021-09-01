@@ -1,10 +1,11 @@
 import { Heading } from "@chakra-ui/react";
 import { BoxSize, Flex, Parag } from "../../Styles/styles";
+import { ShadowEffect } from "../../Styles/effects";
 
 const FilterCard = ({ icon, text, handleClick }) => (
 	<BoxSize
 		name={text}
-		style={{ padding: "0rem", cursor: "pointer" }}
+		style={{ padding: "0rem", cursor: "pointer", ShadowEffect }}
 		isInvisible={false}
 		onClick={() => handleClick(text)}
 	>

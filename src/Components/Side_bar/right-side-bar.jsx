@@ -6,7 +6,7 @@ import UserMenu from "../User_menu/user_menu";
 import SingleUser from "../UserAvatar/SingelUser";
 import { Link } from "react-router-dom";
 import { MenuItem } from "@chakra-ui/menu";
-import { MainBlue } from "../../Styles/colors";
+import { LightBlue } from "../../Styles/colors";
 import { useContext } from "react";
 import { GlobalContext } from "../../Context/global/global-context";
 import { useHistory } from "react-router";
@@ -39,14 +39,14 @@ const RightSideBar = () => {
 							<Link to="/profile">
 								<MenuItem
 									_focus={{ background: "trasparent" }}
-									_hover={{ background: MainBlue }}
+									_hover={{ background: LightBlue }}
 									color="white"
 								>
 									Settings
 								</MenuItem>
 							</Link>
 							<MenuItem
-								_hover={{ background: MainBlue }}
+								_hover={{ background: LightBlue }}
 								onClick={() => handleLogout()}
 								color="white"
 							>
