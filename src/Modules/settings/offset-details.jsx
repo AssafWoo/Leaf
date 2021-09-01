@@ -165,6 +165,7 @@ const OffsetDetails = () => {
 				>
 					<Parag>Favorite offsets</Parag>
 					<TableTemplate
+						filterCards=""
 						tableData={projectsState.favoriteProjects}
 						columnsType={ProjectsColumns}
 					/>

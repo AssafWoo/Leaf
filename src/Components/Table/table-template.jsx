@@ -10,7 +10,7 @@ import { LightBlue, MainGreen, MainYellow } from "../../Styles/colors";
 import FilterCard from "../Cards/filter_cards";
 import FilterComponent from "./search";
 
-const TableTemplate = ({ columnsType, tableData = [] }) => {
+const TableTemplate = ({ columnsType, tableData = [], filterCards }) => {
 	const [filterText, setFilterText] = useState("");
 	const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
 	const [pending, setPending] = useState(true);
@@ -37,10 +37,6 @@ const TableTemplate = ({ columnsType, tableData = [] }) => {
 			}
 		};
 
-		const handleClick = (item) => {
-			console.log(`get request for ${item} items`);
-		};
-
 		return (
 			<Flex
 				style={{
@@ -49,21 +45,7 @@ const TableTemplate = ({ columnsType, tableData = [] }) => {
 					flexDirection: "row",
 				}}
 			>
-				<FilterCard
-					icon={<FaFly size="2rem" color={LightBlue} />}
-					text="Placed"
-					handleClick={handleClick}
-				/>
-				<FilterCard
-					icon={<BiLoader size="2rem" color={MainYellow} />}
-					text="Proccessing"
-					handleClick={handleClick}
-				/>
-				<FilterCard
-					icon={<ImEarth size="2rem" color={MainGreen} />}
-					text="Retired"
-					handleClick={handleClick}
-				/>
+				{filterCards}
 				<BoxSize isInvisible={true}>
 					<FilterComponent
 						onFilter={(e) => setFilterText(e.target.value)}

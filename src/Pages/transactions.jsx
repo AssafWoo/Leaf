@@ -9,6 +9,11 @@ import useFetch from "../Utils/useFetch";
 import { setTransactions } from "../Context/actions/transactions";
 import { Spinner } from "@chakra-ui/react";
 import { mockTransactionsData } from "../Mocks/transactions-mock";
+import FilterCard from "../Components/Cards/filter_cards";
+import { ImEarth } from "react-icons/im";
+import { BiLoader } from "react-icons/bi";
+import { FaFly } from "react-icons/fa";
+import { LightBlue, MainGreen, MainYellow } from "../Styles/colors";
 
 const TransactionsComponent = () => {
 	const { transactionsState, transactionsDispatch } = useContext(GlobalContext);
@@ -30,6 +35,10 @@ const TransactionsComponent = () => {
 		transactionsDispatch(setTransactions(data));
 	}, [data, transactionsDispatch]);
 
+	const handleClick = (item) => {
+		console.log(`get request for ${item} items`);
+	};
+
 	return (
 		<Flex>
 			<Heading {...SubHeader}>Transactions</Heading>
@@ -46,6 +55,25 @@ const TransactionsComponent = () => {
 				{transactionsData ? (
 					<TableTemplate
 						// tableData={transactionsState.allTransactions}
+						filterCards={
+							<>
+								<FilterCard
+									icon={<FaFly size="2rem" color={LightBlue} />}
+									text="Placed"
+									handleClick={handleClick}
+								/>
+								<FilterCard
+									icon={<BiLoader size="2rem" color={MainYellow} />}
+									text="Proccessing"
+									handleClick={handleClick}
+								/>
+								<FilterCard
+									icon={<ImEarth size="2rem" color={MainGreen} />}
+									text="Retired"
+									handleClick={handleClick}
+								/>
+							</>
+						}
 						tableData={mockTransactionsData}
 						columnsType={transactionsColumns}
 					/>

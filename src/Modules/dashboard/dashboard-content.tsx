@@ -146,6 +146,7 @@ const DashboardContent = ({
 					<BreakLine />
 					{tableData ? 
 					<TableTemplate
+						filterCards=""
 						tableData={tableData}
 						columnsType={transactionsColumns}
 					/> : <Spinner />}

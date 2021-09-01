@@ -62,7 +62,7 @@ const Settings = () => {
 						<TabPanel>
 							<OffsetDetails />
 						</TabPanel>
-						<TabPanel>
+						<TabPanel id="billing">
 							<Parag>Your billing information</Parag>
 							<BreakLine />
 							<PaymentForm />
