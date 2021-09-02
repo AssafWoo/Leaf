@@ -57,7 +57,6 @@ const Login = () => {
 	const { email, password, error, isLoading } = state;
 	const handleLogin = async (e) => {
 		try {
-			// await some server call with the state values
 			const data = await axios.post(
 				"http://localhost:3001/backoffice/auth/login",
 				{ email: email, password: password }

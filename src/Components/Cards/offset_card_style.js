@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import {
-	DarkerTheme,
-	DarkTheme,
-	LightBlue,
-	MainBlue,
-	MainGreen,
-} from "../../Styles/colors";
+import { LightBlue, MainBlue } from "../../Styles/colors";
+
+export const ImgComponent = styled.img`
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	padding: 0px 4px 0px 4px;
+`;
 
 export const OffsetCardWrapper = styled.div`
 	.container {

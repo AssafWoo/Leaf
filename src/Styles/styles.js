@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { DarkerTheme, DarkTheme, LightBlue, MainGreen } from "./colors";
+import {
+	DarkerTheme,
+	DarkTheme,
+	LeafRed,
+	LightBlue,
+	MainGreen,
+	MainRed,
+} from "./colors";
 import { Ripple, ShadowEffect } from "./effects";
 
 // heading fontsize - 1.1rem;
@@ -156,6 +163,33 @@ export const BoxSize = styled.div`
 `;
 
 //Common
+
+export const AddCancelButtons = `
+	border-radius: 15px;
+	padding: 0.9rem;
+	border: none;
+	color: white;
+	position: relative;
+	cursor: pointer;
+`;
+
+export const CancelButton = styled.button`
+	${AddCancelButtons}
+	background-color: ${MainRed};
+`;
+
+export const AddButton = styled.button`
+	${AddCancelButtons}
+	background-color: ${MainGreen};
+`;
+
+export const CenteredSpan = styled.span`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	cursor: pointer;
+	transform: translate(-42%, -59%);
+`;
 
 export const BreakLine = styled.div`
 	margin: 2.5rem 0;

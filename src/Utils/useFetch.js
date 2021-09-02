@@ -29,8 +29,6 @@ const useFetch = (queryURL, queryName) => {
 		}
 	);
 
-	// console.log(status, data, error)
-
 	if (isLoading) {
 		return <Spinner />;
 	}

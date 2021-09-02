@@ -73,12 +73,13 @@ const ProjectsMarketplace = () => {
 	};
 	return (
 		<Flex>
-			<Heading {...SubHeader}>Our Projects</Heading>
+			<Heading {...SubHeader}>Your Favorite Projects</Heading>
 			<BreakLine />
 			<Button
 				left="90%"
 				type="submit"
 				disabled={isDisabled}
+				position="absolute"
 				bg={LightBlue}
 				colorScheme={"blue"}
 				onClick={() => {
@@ -87,12 +88,26 @@ const ProjectsMarketplace = () => {
 			>
 				Save
 			</Button>
-			<BreakLine />
-			<Flex style={{ marginTop: "4rem" }}>
+			<Flex style={{ marginTop: "4rem", marginBottom: "4rem" }}>
 				{projects ? (
 					<>
 						{projects?.map((item) => (
-							<OffsetCard handleClick={handleClick} item={item} />
+							<OffsetCard handleClick={handleClick} item={item} isFav={true} />
+						))}
+					</>
+				) : (
+					<Spinner
+						style={{ position: "absolute", top: "50%", left: "50%" }}
+						color="white"
+					/>
+				)}
+			</Flex>
+			<Heading {...SubHeader}>All Projects</Heading>
+			<Flex style={{ marginTop: "4rem", marginBottom: "4rem" }}>
+				{projects ? (
+					<>
+						{projects?.map((item) => (
+							<OffsetCard handleClick={handleClick} item={item} isFav={false} />
 						))}
 					</>
 				) : (

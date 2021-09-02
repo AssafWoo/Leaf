@@ -43,9 +43,7 @@ export const TableWrapper = styled.div`
 	background: ${DarkerTheme} !important;
 	border: none;
 	width: 100%;
-	[data-value="allowRowEvents"] {
-		color: "green";
-	}
+
 	.kVlSIs {
 		background: transparent;
 		color: white;
