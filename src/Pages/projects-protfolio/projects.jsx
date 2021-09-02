@@ -119,16 +119,10 @@ const ProjectsMarketplace = () => {
 			</Flex>
 			{projectsState.favoriteProjects.length > 0 ? (
 				<>
-					<BoxSize
-						style={{ display: "block", width: "100%" }}
-						isInvisible={true}
-					>
-						<Heading {...SubHeader}>Your favorite projects</Heading>
-					</BoxSize>
+					<Heading {...SubHeader}>Your favorite projects</Heading>
 					<BreakLine />
-					<BoxSize isInvisible={true}>
+					<div style={{ width: "100%", textAlign: "left" }}>
 						<Button
-							right="1%"
 							type="submit"
 							disabled={isDisabled}
 							bg={LightBlue}
@@ -139,13 +133,12 @@ const ProjectsMarketplace = () => {
 						>
 							Share with my customers
 						</Button>
-					</BoxSize>
+					</div>
 				</>
 			) : (
 				<Heading {...SubHeader}>No favorite projects yet...</Heading>
 			)}
-
-			<Flex style={{ marginTop: "4rem", marginBottom: "4rem" }}>
+			<Flex>
 				{projectsState.favoriteProjects ? (
 					<>
 						{projectsState.favoriteProjects.map((item) => (

@@ -99,8 +99,6 @@ const OffsetCard = (props) => {
 						color="white"
 					>
 						Terraclear - Clean water access for families in Laos
-						<br />
-						{item.id}
 					</Heading>
 					<BreakLine />
 					{isFav ? (
