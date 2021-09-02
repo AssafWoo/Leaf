@@ -1,4 +1,4 @@
-import { DarkTheme, MainGreen } from "../../Styles/colors";
+import { MainGreen } from "../../Styles/colors";
 import { BoxSize, Flex, Parag } from "../../Styles/styles";
 import { Heading } from "@chakra-ui/layout";
 

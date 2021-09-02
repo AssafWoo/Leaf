@@ -3,7 +3,8 @@ import {
 	LOAD_PROJECTS_SUCCESS,
 	LOAD_PROJECTS_FAILURE,
 	SET_PROJECTS,
-	SET_FAVORITE_PROJECT,
+	ADD_FAVORITE_PROJECT,
+	REMOVE_FAVORITE_PROJECT,
 } from "../actions/projects";
 
 const reducer = (state, action) => {
@@ -16,7 +17,8 @@ const reducer = (state, action) => {
 			return { ...state, error: action.payload };
 		case SET_PROJECTS:
 			return { ...state, allProjects: action.payload, error: null };
-		case SET_FAVORITE_PROJECT:
+		case ADD_FAVORITE_PROJECT:
+			state.error = "";
 			const isItemExists = state.favoriteProjects.includes(action.payload);
 			if (isItemExists === false) {
 				return {
@@ -25,14 +27,21 @@ const reducer = (state, action) => {
 					error: null,
 				};
 			}
+			return {
+				...state,
+				error: "Project already in favorites",
+			};
+		case REMOVE_FAVORITE_PROJECT:
 			const filteredFavorite = state.favoriteProjects.filter(
 				(e) => e !== action.payload
 			);
+			console.log(filteredFavorite);
 			return {
 				...state,
 				favoriteProjects: filteredFavorite,
 				error: null,
 			};
+
 		default:
 			return state;
 	}

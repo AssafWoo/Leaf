@@ -3,16 +3,10 @@ import { Heading, Tag, TagLabel } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/button";
 import { GiPaperWindmill, GiPineTree } from "react-icons/gi";
 import { IoIosWater } from "react-icons/io";
-import { useState } from "react";
 import ImgSource from "../../Assets/images/project1.jpg";
 
 import { BoxSize, BreakLine, Flex } from "../../Styles/styles";
-import {
-	DarkerTheme,
-	DarkTheme,
-	LightBlue,
-	MainGreen,
-} from "../../Styles/colors";
+import { DarkerTheme, LightBlue, MainGreen } from "../../Styles/colors";
 import { ImgComponent } from "./offset_card_style";
 
 export const OFFSET_TYPE = {
@@ -45,12 +39,8 @@ export const OFFSET_TYPE = {
 	},
 };
 
-const OffsetCard = ({ item, handleClick, isFav }) => {
-	const [choosen, setChoosen] = useState(false);
-	const handleSubmit = (item) => {
-		setChoosen(!choosen);
-		handleClick(item);
-	};
+const OffsetCard = (props) => {
+	const { item, addFavorite, removeFavorite, isFav } = props;
 	return (
 		<Flex>
 			<BoxSize
@@ -109,10 +99,16 @@ const OffsetCard = ({ item, handleClick, isFav }) => {
 						color="white"
 					>
 						Terraclear - Clean water access for families in Laos
+						<br />
+						{item.id}
 					</Heading>
 					<BreakLine />
 					{isFav ? (
-						<Button mg="1rem" colorScheme="red">
+						<Button
+							mg="1rem"
+							colorScheme="red"
+							onClick={() => removeFavorite(item)}
+						>
 							Remove
 						</Button>
 					) : (
@@ -126,7 +122,11 @@ const OffsetCard = ({ item, handleClick, isFav }) => {
 						// 	zIndex="1"
 						// 	onClick={() => handleSubmit(item)}
 						// />
-						<Button mg="1rem" colorScheme="green">
+						<Button
+							mg="1rem"
+							colorScheme="green"
+							onClick={() => addFavorite(item)}
+						>
 							Add
 						</Button>
 					)}

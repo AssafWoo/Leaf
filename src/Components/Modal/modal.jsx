@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/modal";
 import { DarkerTheme, MainGreen } from "../../Styles/colors";
 import { SlideEffect } from "../../Styles/effects";
-import { BreakLine } from "../../Styles/styles";
 
 const ModalComponent = ({
 	openButtonContent,

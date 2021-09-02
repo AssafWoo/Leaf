@@ -1,9 +1,12 @@
 import { Heading } from "@chakra-ui/layout";
-import { BreakLine, Flex, SubHeader } from "../../Styles/styles";
+import { BoxSize, BreakLine, Flex, SubHeader } from "../../Styles/styles";
 import OffsetCard from "../../Components/Cards/offset_card";
 import { useContext } from "react";
 import { GlobalContext } from "../../Context/global/global-context";
-import { setFavoriteProject } from "../../Context/actions/projects";
+import {
+	addFavoriteProject,
+	removeFavoriteProject,
+} from "../../Context/actions/projects";
 import { Button, Spinner, useToast } from "@chakra-ui/react";
 import { LightBlue } from "../../Styles/colors";
 import useFetch from "../../Utils/useFetch";
@@ -51,7 +54,6 @@ const ProjectsMarketplace = () => {
 			});
 			setIsDisabled(false);
 		} catch (e) {
-			console.log(e.response.data.message);
 			toast({
 				title: e.response.data.message,
 				description: `Error code :${e.response.data.statusCode}`,
@@ -63,36 +65,49 @@ const ProjectsMarketplace = () => {
 		}
 	};
 
-	const handleClick = (project) => {
-		if (project.isChecked) {
-			project.isChecked = false;
+	const addFavorite = (project) => {
+		const isItemExists = projectsState.favoriteProjects.includes(project);
+		if (isItemExists) {
+			toast({
+				title: "Project already exists in favorites",
+				description: "",
+				status: "error",
+				duration: 2000,
+				isClosable: true,
+			});
 		} else {
-			project.isChecked = true;
+			toast({
+				title: "Project added to favorites!",
+				description: "",
+				status: "success",
+				duration: 2000,
+				isClosable: true,
+			});
+			projectsDispatch(addFavoriteProject(project));
 		}
-		projectsDispatch(setFavoriteProject(project.id));
 	};
+
+	const removeFavorite = (project) => {
+		projectsDispatch(removeFavoriteProject(project));
+		toast({
+			title: "Project removed from favorites!",
+			description: "",
+			status: "success",
+			duration: 2000,
+			isClosable: true,
+		});
+	};
+
 	return (
 		<Flex>
-			<Heading {...SubHeader}>Your Favorite Projects</Heading>
-			<BreakLine />
-			<Button
-				left="90%"
-				type="submit"
-				disabled={isDisabled}
-				position="absolute"
-				bg={LightBlue}
-				colorScheme={"blue"}
-				onClick={() => {
-					onSave();
-				}}
-			>
-				Save
-			</Button>
-			<Flex style={{ marginTop: "4rem", marginBottom: "4rem" }}>
+			<Heading {...SubHeader} style={{ marginBottom: "3rem" }}>
+				All projects
+			</Heading>
+			<Flex style={{ marginBottom: "3rem" }}>
 				{projects ? (
 					<>
 						{projects?.map((item) => (
-							<OffsetCard handleClick={handleClick} item={item} isFav={true} />
+							<OffsetCard addFavorite={addFavorite} item={item} isFav={false} />
 						))}
 					</>
 				) : (
@@ -102,19 +117,47 @@ const ProjectsMarketplace = () => {
 					/>
 				)}
 			</Flex>
-			<Heading {...SubHeader}>All Projects</Heading>
+			{projectsState.favoriteProjects.length > 0 ? (
+				<>
+					<BoxSize
+						style={{ display: "block", width: "100%" }}
+						isInvisible={true}
+					>
+						<Heading {...SubHeader}>Your favorite projects</Heading>
+					</BoxSize>
+					<BreakLine />
+					<BoxSize isInvisible={true}>
+						<Button
+							right="1%"
+							type="submit"
+							disabled={isDisabled}
+							bg={LightBlue}
+							colorScheme="blue"
+							onClick={() => {
+								onSave();
+							}}
+						>
+							Share with my customers
+						</Button>
+					</BoxSize>
+				</>
+			) : (
+				<Heading {...SubHeader}>No favorite projects yet...</Heading>
+			)}
+
 			<Flex style={{ marginTop: "4rem", marginBottom: "4rem" }}>
-				{projects ? (
+				{projectsState.favoriteProjects ? (
 					<>
-						{projects?.map((item) => (
-							<OffsetCard handleClick={handleClick} item={item} isFav={false} />
+						{projectsState.favoriteProjects.map((item) => (
+							<OffsetCard
+								removeFavorite={removeFavorite}
+								item={item}
+								isFav={true}
+							/>
 						))}
 					</>
 				) : (
-					<Spinner
-						style={{ position: "absolute", top: "50%", left: "50%" }}
-						color="white"
-					/>
+					<p>No favs yet.</p>
 				)}
 			</Flex>
 		</Flex>

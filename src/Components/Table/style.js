@@ -4,7 +4,7 @@ import { DarkerTheme, MainGreen, MainRed } from "../../Styles/colors";
 export const customStyles = {
 	headCells: {
 		style: {
-			background: "#0d1117",
+			background: "#0d1117 !important",
 			color: "white",
 			fontSize: "1.1rem",
 			"&:hover": {
@@ -14,7 +14,7 @@ export const customStyles = {
 	},
 	cells: {
 		style: {
-			background: "#0d1117",
+			background: "#0d1117 !important",
 			color: "white",
 			width: "1rem !important",
 			fontSize: ".9rem",
@@ -22,13 +22,13 @@ export const customStyles = {
 	},
 	nav: {
 		style: {
-			background: "#0d1117",
+			background: "#0d1117 !important",
 			color: "white",
 		},
 	},
 	row: {
 		style: {
-			background: "#0d1117",
+			background: "#0d1117 !important",
 			color: "white",
 		},
 	},
@@ -63,6 +63,10 @@ export const TableWrapper = styled.div`
 	}
 	.rdt_Pagination {
 		${tableCellsStyle}
+	}
+	.iUiBje {
+		background: transparent;
+		color: white;
 	}
 	header {
 		${tableCellsStyle}

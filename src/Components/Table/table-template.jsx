@@ -3,12 +3,8 @@ import { TableWrapper, customStyles } from "./style";
 import { useEffect, useMemo, useState } from "react";
 import { Spinner } from "@chakra-ui/spinner";
 import { BoxSize, Flex } from "../../Styles/styles";
-import { ImEarth } from "react-icons/im";
-import { BiLoader } from "react-icons/bi";
-import { FaFly } from "react-icons/fa";
-import { LightBlue, MainGreen, MainYellow } from "../../Styles/colors";
-import FilterCard from "../Cards/filter_cards";
 import FilterComponent from "./search";
+import { LightBlue } from "../../Styles/colors";
 
 const TableTemplate = ({ columnsType, tableData = [], filterCards }) => {
 	const [filterText, setFilterText] = useState("");
@@ -70,10 +66,12 @@ const TableTemplate = ({ columnsType, tableData = [], filterCards }) => {
 				pagination
 				paginationPerPage={5}
 				subHeader
-				highlightOnHover
 				progressPending={pending}
-				progressComponent={<Spinner />}
+				progressComponent={
+					<Spinner color={LightBlue} background="transparent" />
+				}
 				subHeaderComponent={subHeaderComponentMemo}
+				style={{ background: "transparent" }}
 			/>
 		</TableWrapper>
 	);

@@ -31,6 +31,7 @@ const reducer = (state, action) => {
 					company: globalStore.merchant.name,
 					email: globalStore.email,
 					accessKey: globalStore.accessKey,
+					siteUrl: globalStore.site_URL,
 					address: {
 						country: globalStore.merchant.addressLocation.country,
 					},

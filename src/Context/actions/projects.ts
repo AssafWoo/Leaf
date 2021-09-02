@@ -4,6 +4,8 @@ export const LOAD_PROJECTS_SUCCESS = '[projects] success';
 export const LOAD_PROJECTS_FAILURE = '[projects] failure';
 export const SET_PROJECTS = '[projects] set';
 export const SET_FAVORITE_PROJECT ='[projects] set favorite';
+export const ADD_FAVORITE_PROJECT ='[projects] Add favorite';
+export const REMOVE_FAVORITE_PROJECT ='[projects] remove favorite';
 
 export const loadProjects = {
     type:LOAD_PROJECTS,
@@ -27,5 +29,14 @@ export const setFavoriteProject = (project:any) => ({
     type:SET_FAVORITE_PROJECT,
     payload:project
 });
+export const addFavoriteProject = (project:any) => ({
+    type:ADD_FAVORITE_PROJECT,
+    payload:project
+});
+export const removeFavoriteProject = (project:any) => ({
+    type:REMOVE_FAVORITE_PROJECT,
+    payload:project
+});
+
 
 
