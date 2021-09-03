@@ -76,7 +76,7 @@ const Login = () => {
 		} catch (e) {
 			dispatchFunction({ type: "error", value: e });
 			toast({
-				title: e.response.data.message,
+				title: e?.response?.data.message,
 				description: `Error code: ${e.response.data.statusCode}`,
 				status: "error",
 				duration: 1000,
