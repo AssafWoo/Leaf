@@ -6,13 +6,13 @@ import Login from "../Pages/login";
 import Dashboard from "../Pages/main-dashboard";
 import Profile from "../Pages/profile";
 import Signup from "../Pages/sign-up";
-import ErrorPage from "../Pages/404";
 import { Layout } from "../Layout/Layout";
 import ProjectPage from "../Pages//transaction/transaction";
 import ProjectsMarketplace from "../Pages/projects-protfolio/projects";
 import { GlobalContext } from "../Context/global/global-context";
 import { useContext, useState } from "react";
 import { useEffect } from "react";
+import ErrorPage from '../Pages/404';
 
 const Routes = () => {
 	const { userState, _ } = useContext(GlobalContext);
@@ -33,6 +33,8 @@ const Routes = () => {
 						<Switch>
 							<Route exact path="/profile" component={Profile} />
 							<Route exact path="/api" component={APICallsComponent} />
+							{/* <Route  component={ErrorPage} /> */}
+
 							<Route
 								exact
 								path="/transactions"
@@ -52,8 +54,10 @@ const Routes = () => {
 					<Route exact path="/projects/:id" component={ProjectPage} />
 					<Route exact path="/signup" component={Signup} />
 					<Route exact path="/login" component={Login} />
-
 					<Route exact path="/" component={Login} />
+					<Route path="*">
+						<ErrorPage />
+					</Route>
 				</>
 			)}
 		</Switch>

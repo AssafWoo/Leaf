@@ -11,14 +11,18 @@ import { Formik, Form, Field } from "formik";
 import {
 	FormControl,
 	FormErrorMessage,
+	FormHelperText,
 	FormLabel,
 } from "@chakra-ui/form-control";
 import { useState } from "react";
 import { Tag, useToast } from "@chakra-ui/react";
 
-const AccountDetails = ({ accountDetails }) => {
+const AccountDetails = ({accountOwnerName}) => {
 	const [editable, setEditble] = useState(false);
 	const [editableString, setEditbleString] = useState("Edit");
+	const [password, setPassword] = useState('');
+	const [userName, setUserName] = useState(accountOwnerName);
+	const [newPassword, setNewPassword] = useState('');
 	const toast = useToast();
 
 	const onEditableChange = () => {
@@ -26,7 +30,8 @@ const AccountDetails = ({ accountDetails }) => {
 		else if (editableString === "Save") {
 			(async () => {
 				try {
-					await console.log("hey");
+					console.log('post request');
+					console.log(userName);
 					toast({
 						title: "Changed successfully",
 						description: "",
@@ -36,6 +41,7 @@ const AccountDetails = ({ accountDetails }) => {
 					});
 					// another call to the changed information
 				} catch (e) {
+					console.log('error accured');
 					toast({
 						title: "Failed, please try again.",
 						description: "",
@@ -50,20 +56,36 @@ const AccountDetails = ({ accountDetails }) => {
 		}
 	};
 
+	const handlePasswordChange = () => {
+		console.log(password)
+		console.log(newPassword)
+		try {
+			// async call and match the password written with the password saved on our side.
+			try {
+				// validate the strength of new password
+				// async call to change the passwords if the above is good
+			} catch(e){
+				// catch any errors with changing the password
+			}
+		}
+		catch(e){
+			// catch any errors with the matching passwords
+		}
+	}
+
 	return (
 		<>
 			<Formik
 				initialValues={{
-					userName: accountDetails.name,
-					email: accountDetails.email,
+					userName: userName,
 					password: "",
 				}}
-				onSubmit={async (data, { setSubmitting }) => {
-					setSubmitting(true);
-					//async call
-					console.log("submit: ", data);
-					setSubmitting(false);
-				}}
+				// onSubmit={async (data, { setSubmitting }) => {
+				// 	setSubmitting(true);
+				// 	//async call
+				// 	console.log("submit: ", data);
+				// 	setSubmitting(false);
+				// }}
 			>
 				{({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
 					<Form
@@ -75,7 +97,6 @@ const AccountDetails = ({ accountDetails }) => {
 					>
 						<Button
 							float="right"
-							type="submit"
 							bg={editableString === "Edit" ? LightBlue : MainGreen}
 							colorScheme={editableString === "Edit" ? "blue" : "green"}
 							onClick={() => {
@@ -83,8 +104,7 @@ const AccountDetails = ({ accountDetails }) => {
 								onEditableChange();
 							}}
 						>
-							{" "}
-							{editableString}{" "}
+							{editableString}
 						</Button>
 						<Flex>
 							<BoxSize flexSize="1" isInvisible={true}>
@@ -104,8 +124,8 @@ const AccountDetails = ({ accountDetails }) => {
 												background={DarkerTheme}
 												border="none"
 												name="userName"
-												value={values.userName}
-												onChange={handleChange}
+												value={userName}
+												onChange={(e) => setUserName(e.target.value)}
 												onBlur={handleBlur}
 												mb="5"
 											/>
@@ -153,19 +173,9 @@ const AccountDetails = ({ accountDetails }) => {
 							>
 								<Button
 									float="right"
-									type="submit"
 									bg={MainGreen}
 									colorScheme={"green"}
-									onClick={() => {
-										//async call and toast
-										toast({
-											title: "Changed successfully",
-											description: "",
-											status: "success",
-											duration: 1000,
-											isClosable: true,
-										});
-									}}
+									onClick={handlePasswordChange}
 								>
 									Change
 								</Button>
@@ -178,16 +188,18 @@ const AccountDetails = ({ accountDetails }) => {
 														color="white"
 														fontSize="1.1rem"
 														textAlign="left"
-														pb="2"
 													>
 														Password
 													</FormLabel>
+													<FormHelperText pb="2" textAlign="left">
+														Your current password
+													</FormHelperText>
 													<Input
 														background={DarkerTheme}
 														border="none"
 														name="password"
-														value={values.password}
-														onChange={handleChange}
+														value={password}
+														onChange={(e) => setPassword(e.target.value)}
 														onBlur={handleBlur}
 														mb="5"
 													/>
@@ -204,20 +216,21 @@ const AccountDetails = ({ accountDetails }) => {
 														color="white"
 														fontSize="1.1rem"
 														textAlign="left"
-														pb="2"
 													>
 														New password
 													</FormLabel>
+													<FormHelperText pb="2" textAlign="left">
+														Must be 8 characters long
+													</FormHelperText>
 													<Input
 														background={DarkerTheme}
 														border="none"
 														name="newPassword"
-														value={values.newPassword}
-														onChange={handleChange}
+														value={newPassword}
+														onChange={(e) => setNewPassword(e.target.value)}
 														onBlur={handleBlur}
-														mb="5"
 													/>
-													<FormErrorMessage>'</FormErrorMessage>
+												
 												</FormControl>
 											)}
 										</Field>

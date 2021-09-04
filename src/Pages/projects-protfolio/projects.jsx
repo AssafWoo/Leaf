@@ -58,7 +58,7 @@ const ProjectsMarketplace = () => {
 				title: e.response.data.message,
 				description: `Error code :${e.response.data.statusCode}`,
 				status: "error",
-				duration: 1000,
+				duration: 650,
 				isClosable: true,
 			});
 			setIsDisabled(false);
@@ -72,7 +72,7 @@ const ProjectsMarketplace = () => {
 				title: "Project already exists in favorites",
 				description: "",
 				status: "error",
-				duration: 2000,
+				duration: 650,
 				isClosable: true,
 			});
 		} else {
@@ -80,7 +80,7 @@ const ProjectsMarketplace = () => {
 				title: "Project added to favorites!",
 				description: "",
 				status: "success",
-				duration: 2000,
+				duration: 1000,
 				isClosable: true,
 			});
 			projectsDispatch(addFavoriteProject(project));

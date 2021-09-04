@@ -25,10 +25,12 @@ const Settings = () => {
 	const history = useHistory();
 	const [indexToShow, setIndexToShow] = useState(0);
 
+	// need to add GET call here for users details.
+
 	const handleSubmit = ({ status }) => {
 		setStatus(status);
 	};
-
+	console.log(userState.userData.name)
 	return (
 		<Flex>
 			<Heading {...SubHeader}>Your Profile</Heading>
@@ -57,7 +59,7 @@ const Settings = () => {
 							/>
 						</TabPanel>
 						<TabPanel paddingLeft="0" paddingRight="0">
-							<AccountDetails accountDetails={userState.userData} />
+							<AccountDetails accountOwnerName={userState.userData.name} />
 						</TabPanel>
 						<TabPanel paddingLeft="0" paddingRight="0">
 							<OffsetDetails />

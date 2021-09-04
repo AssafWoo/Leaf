@@ -39,6 +39,7 @@ const Signup = () => {
 		isLoading,
 	} = state;
 
+
 	const handleCountrySelect = (item) => {
 		state.Country = item;
 		console.log(state.Country);
@@ -124,7 +125,7 @@ const Signup = () => {
 												style={{ padding: "1.5rem", background: "transparent" }}
 											>
 												{inputNames.map((input) => (
-													<Field>
+													<Field >
 														{({ field, form }) => (
 															<FormControl
 																id={input.name}
@@ -134,13 +135,16 @@ const Signup = () => {
 																	color="white"
 																	fontSize="1.1rem"
 																	textAlign="left"
-																	pb="2"
 																>
 																	{input.name}
 																</FormLabel>
+																<FormHelperText textAlign="left" pb="2">
+																	{input.message}
+																</FormHelperText>
 																<Input
 																	type={input.type}
 																	name={input.name}
+																	mb="5"
 																	onChange={(e) =>
 																		dispatch({
 																			type: "field",
@@ -152,9 +156,7 @@ const Signup = () => {
 																	border="none"
 																	bg={DarkTheme}
 																/>
-																<FormHelperText mb="5">
-																	{input.message}
-																</FormHelperText>{" "}
+
 															</FormControl>
 														)}
 													</Field>
@@ -176,13 +178,17 @@ const Signup = () => {
 																	color="white"
 																	fontSize="1.1rem"
 																	textAlign="left"
-																	pb="2"
 																>
 																	{input.name}
 																</FormLabel>
+																<FormHelperText textAlign="left" pb="2">
+																	{input.message}
+																</FormHelperText>
 																<Input
 																	type="text"
 																	name={input.name}
+																	mb="5"
+
 																	onChange={(e) =>
 																		dispatch({
 																			type: "field",
@@ -194,9 +200,7 @@ const Signup = () => {
 																	border="none"
 																	bg={DarkTheme}
 																/>
-																<FormHelperText mb="5">
-																	{input.message}
-																</FormHelperText>
+
 															</FormControl>
 														)}
 													</Field>
@@ -212,6 +216,9 @@ const Signup = () => {
 															>
 																Country
 															</FormLabel>
+															<FormHelperText textAlign="left">
+																	Find your country
+																</FormHelperText>
 															<Autocomplete
 																handleCountrySelect={handleCountrySelect}
 																suggestions={countries}
