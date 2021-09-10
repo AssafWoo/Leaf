@@ -6,7 +6,7 @@ import {
 	LightBlue,
 	MainGreen,
 } from "../../Styles/colors";
-import { BoxSize, BreakLine, Flex } from "../../Styles/styles";
+import { BoxSize, BreakLine, Flex, Parag } from "../../Styles/styles";
 import { Formik, Form, Field } from "formik";
 import {
 	FormControl,
@@ -109,7 +109,6 @@ const AccountDetails = ({ accountDetails }) => {
 												onBlur={handleBlur}
 												mb="5"
 											/>
-											<FormErrorMessage>'</FormErrorMessage>
 										</FormControl>
 									)}
 								</Field>
@@ -125,107 +124,12 @@ const AccountDetails = ({ accountDetails }) => {
 			<BreakLine />
 			<Flex>
 				<BoxSize isInvisible={false} flexSize="5">
-					<Formik
-						initialValues={{
-							password: "",
-							newPassword: "",
-						}}
-						onSubmit={async (data, { setSubmitting }) => {
-							setSubmitting(true);
-							//async call
-							console.log("submit: ", data);
-							setSubmitting(false);
-						}}
-					>
-						{({
-							values,
-							isSubmitting,
-							handleChange,
-							handleBlur,
-							handleSubmit,
-						}) => (
-							<Form
-								style={{
-									background: DarkTheme,
-									borderRadius: "15px",
-									padding: "1rem",
-								}}
-							>
-								<Button
-									float="right"
-									type="submit"
-									bg={MainGreen}
-									colorScheme={"green"}
-									onClick={() => {
-										//async call and toast
-										toast({
-											title: "Changed successfully",
-											description: "",
-											status: "success",
-											duration: 1000,
-											isClosable: true,
-										});
-									}}
-								>
-									Change
-								</Button>
-								<Flex>
-									<BoxSize flexSize="1" isInvisible={true}>
-										<Field>
-											{({ field, form }) => (
-												<FormControl id="password">
-													<FormLabel
-														color="white"
-														fontSize="1.1rem"
-														textAlign="left"
-														pb="2"
-													>
-														Password
-													</FormLabel>
-													<Input
-														background={DarkerTheme}
-														border="none"
-														name="password"
-														value={values.password}
-														onChange={handleChange}
-														onBlur={handleBlur}
-														mb="5"
-													/>
-													<FormErrorMessage>'</FormErrorMessage>
-												</FormControl>
-											)}
-										</Field>
-									</BoxSize>
-									<BoxSize flexSize="1" isInvisible={true}>
-										<Field>
-											{({ field, form }) => (
-												<FormControl id="newPassword">
-													<FormLabel
-														color="white"
-														fontSize="1.1rem"
-														textAlign="left"
-														pb="2"
-													>
-														New password
-													</FormLabel>
-													<Input
-														background={DarkerTheme}
-														border="none"
-														name="newPassword"
-														value={values.newPassword}
-														onChange={handleChange}
-														onBlur={handleBlur}
-														mb="5"
-													/>
-													<FormErrorMessage>'</FormErrorMessage>
-												</FormControl>
-											)}
-										</Field>
-									</BoxSize>
-								</Flex>
-							</Form>
-						)}
-					</Formik>
+					<Parag>
+						In order to change password, please click the button and a reset
+						email will be sent to your email
+					</Parag>
+					<BreakLine />
+					<Button colorScheme="blue"> Change password</Button>
 				</BoxSize>
 			</Flex>
 		</>

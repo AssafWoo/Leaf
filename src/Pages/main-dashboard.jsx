@@ -31,6 +31,7 @@ const Dashboard = () => {
 
 	// decoding the accesstoken jwt to information about user
 	const userInformation = getJWT(localStorage.getItem("id"));
+
 	// putting the information in the store
 	usePersistedReducer(useReducer(reducer, userInformation));
 

@@ -19,6 +19,7 @@ const Routes = () => {
 	const [authUser, setAuthUser] = useState(false);
 	useEffect(() => {
 		if (localStorage.getItem("id")) {
+			// i need to authenticate that the token is valid
 			setAuthUser(true);
 		} else {
 			setAuthUser(false);
@@ -42,19 +43,20 @@ const Routes = () => {
 							<Route exact path="/projects" component={ProjectsMarketplace} />
 							<Route exact path="/dashboard" component={Dashboard} />
 							<Route exact path="/" component={Dashboard} />
+							<Route path="/*" component={Dashboard} />
 						</Switch>
 					</Layout>
 					<Route exact path="/projects/:id" component={ProjectPage} />
 				</>
 			) : (
-				<>
+				<Switch>
 					<Route exact path="/error" component={ErrorPage} />
 					<Route exact path="/projects/:id" component={ProjectPage} />
 					<Route exact path="/signup" component={Signup} />
 					<Route exact path="/login" component={Login} />
-
 					<Route exact path="/" component={Login} />
-				</>
+					<Route path="/*" component={ErrorPage} />
+				</Switch>
 			)}
 		</Switch>
 	);

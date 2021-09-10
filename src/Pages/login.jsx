@@ -61,7 +61,6 @@ const Login = () => {
 				"http://localhost:3001/backoffice/auth/login",
 				{ email: email, password: password }
 			);
-			console.log(data);
 			toast({
 				title: "Welcome back",
 				description: "",

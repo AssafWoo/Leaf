@@ -1,13 +1,13 @@
 import { BoxSize, BreakLine, Flex, Parag, SubHeader } from "../Styles/styles";
-import CompanyDetails from "../Modules/settings/company-details";
+import CompanyDetails from "../Modules/profile/company-details";
 import { GlobalContext } from "../Context/global/global-context";
 import { useContext, useState } from "react";
 import { Heading } from "@chakra-ui/layout";
 import { TabList, Tabs, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import PaymentForm from "../Modules/billing/billing";
-import OffsetDetails from "../Modules/settings/offset-details";
+import OffsetDetails from "../Modules/profile/offset-details";
 import { Black, LightBlue } from "../Styles/colors";
-import AccountDetails from "../Modules/settings/account-details";
+import AccountDetails from "../Modules/profile/account-details";
 import { useHistory } from "react-router";
 
 const tabsStyle = {
