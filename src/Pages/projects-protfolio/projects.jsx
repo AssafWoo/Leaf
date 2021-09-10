@@ -1,5 +1,11 @@
 import { Heading } from "@chakra-ui/layout";
-import { BoxSize, BreakLine, Flex, SubHeader } from "../../Styles/styles";
+import {
+	BoxSize,
+	BreakLine,
+	Flex,
+	Parag,
+	SubHeader,
+} from "../../Styles/styles";
 import OffsetCard from "../../Components/Cards/offset_card";
 import { useContext } from "react";
 import { GlobalContext } from "../../Context/global/global-context";
@@ -100,9 +106,10 @@ const ProjectsMarketplace = () => {
 
 	return (
 		<Flex>
-			<Heading {...SubHeader} style={{ marginBottom: "3rem" }}>
-				All projects
-			</Heading>
+			<Heading {...SubHeader}>All projects</Heading>
+			<Parag style={{ color: "white" }}>
+				Browse through our projects and choose what you believe in
+			</Parag>
 			<Flex style={{ marginBottom: "3rem" }}>
 				{projects ? (
 					<>
@@ -120,6 +127,10 @@ const ProjectsMarketplace = () => {
 			{projectsState.favoriteProjects.length > 0 ? (
 				<>
 					<Heading {...SubHeader}>Your favorite projects</Heading>
+					<Parag style={{ color: "white" }}>
+						Take charge, invest in projects important to you and make a change
+						in the world!
+					</Parag>
 					<BreakLine />
 					<div style={{ width: "100%", textAlign: "left" }}>
 						<Button

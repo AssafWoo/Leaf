@@ -8,11 +8,7 @@ import {
 } from "../../Styles/colors";
 import { BoxSize, BreakLine, Flex, Parag } from "../../Styles/styles";
 import { Formik, Form, Field } from "formik";
-import {
-	FormControl,
-	FormErrorMessage,
-	FormLabel,
-} from "@chakra-ui/form-control";
+import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { useState } from "react";
 import { Tag, useToast } from "@chakra-ui/react";
 
@@ -55,8 +51,8 @@ const AccountDetails = ({ accountDetails }) => {
 			<Formik
 				initialValues={{
 					userName: accountDetails.name,
-					email: accountDetails.email,
-					password: "",
+					// email: accountDetails.email,
+					// password: "",
 				}}
 				onSubmit={async (data, { setSubmitting }) => {
 					setSubmitting(true);

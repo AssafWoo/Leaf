@@ -59,9 +59,10 @@ const OffsetDetails = () => {
 
 	return (
 		<>
+			{/*
 			<Parag>Offset Pricing</Parag>
 			<BreakLine />
-			<Formik
+			 <Formik
 				initialValues={{
 					minPrice: 0,
 					maxPrice: 0,
@@ -155,8 +156,9 @@ const OffsetDetails = () => {
 						</Flex>
 					</Form>
 				)}
-			</Formik>
+			</Formik> 
 			<BreakLine />
+			*/}
 			<Flex>
 				<BoxSize
 					isInvisible={true}

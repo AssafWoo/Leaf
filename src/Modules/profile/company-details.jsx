@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/form-control";
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
+import AuthMyInput from "../../Utils/authInput";
 
 const inputFields = [
 	{ name: "Company Name", id: "name" },
@@ -26,54 +27,65 @@ const secondaryInputFields = [
 	{ name: "Site URL", id: "siteURL" },
 ];
 const CompanyDetails = ({ companyDetails }) => {
-	console.log(companyDetails);
 	const [editable, setEditble] = useState(false);
-	const [editableString, setEditbleString] = useState("Edit");
 	const toast = useToast();
-
-	const onEditableChange = () => {
-		if (editableString === "Edit") setEditbleString("Save");
-		else if (editableString === "Save") {
-			(async () => {
-				try {
-					await console.log("hey");
-					toast({
-						title: "Changed successfully",
-						description: "",
-						status: "success",
-						duration: 1000,
-						isClosable: true,
-					});
-					// another call to the changed information
-				} catch (e) {
-					toast({
-						title: "Failed, please try again.",
-						description: "",
-						status: "error",
-						duration: 1000,
-						isClosable: true,
-					});
-				}
-			})();
-
-			setEditbleString("Edit");
-		}
-	};
 
 	return (
 		<>
+			{!editable ? (
+				<Button
+					float="right"
+					bg={LightBlue}
+					type="none"
+					colorScheme="blue"
+					mg="2"
+					onClick={() => {
+						setEditble(!editable);
+						// onEditableChange();
+					}}
+				>
+					Edit
+				</Button>
+			) : (
+				""
+			)}
 			<Formik
 				initialValues={{
 					name: companyDetails.company,
 					companyAddress: companyDetails.address.country,
 					email: companyDetails.email,
-					URL: companyDetails.siteURL,
+					siteURL: companyDetails.siteURL,
 				}}
 				onSubmit={async (data, { setSubmitting }) => {
-					setSubmitting(true);
-					//async call
-					console.log("submit: ", data);
-					setSubmitting(false);
+					console.log("im clicked");
+					if (
+						AuthMyInput(data.name) &&
+						AuthMyInput(data.companyAddress) &&
+						AuthMyInput(data.email) &&
+						AuthMyInput(data.siteURL)
+					) {
+						//async call
+						console.log("async");
+						toast({
+							title: "Changed successfully",
+							description: "",
+							status: "success",
+							duration: 1000,
+							isClosable: true,
+						});
+						setSubmitting(true);
+					} else {
+						console.log("error");
+
+						toast({
+							title: "Failed, please try again.",
+							description: "Cant have empty inputs",
+							status: "error",
+							duration: 1000,
+							isClosable: true,
+						});
+						setSubmitting(false);
+					}
 				}}
 			>
 				{({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
@@ -84,19 +96,23 @@ const CompanyDetails = ({ companyDetails }) => {
 							padding: "1rem",
 						}}
 					>
-						<Button
-							float="right"
-							type="submit"
-							bg={editableString === "Edit" ? LightBlue : MainGreen}
-							colorScheme={editableString === "Edit" ? "blue" : "green"}
-							onClick={() => {
-								setEditble(!editable);
-								onEditableChange();
-							}}
-						>
-							{" "}
-							{editableString}{" "}
-						</Button>
+						{editable ? (
+							<Button
+								float="right"
+								type="submit"
+								bg={MainGreen}
+								colorScheme="green"
+								onClick={() => {
+									setEditble(!editable);
+									// onEditableChange();
+								}}
+							>
+								Save
+							</Button>
+						) : (
+							""
+						)}
+
 						<Flex>
 							<BoxSize flexSize="1" isInvisible={true}>
 								{inputFields.map((input) => (
