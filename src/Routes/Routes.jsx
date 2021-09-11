@@ -18,7 +18,7 @@ const Routes = () => {
 	const { userState, _ } = useContext(GlobalContext);
 	const [authUser, setAuthUser] = useState(false);
 	useEffect(() => {
-		if (localStorage.getItem("id")) {
+		if (localStorage.getItem("token")) {
 			// i need to authenticate that the token is valid
 			setAuthUser(true);
 		} else {

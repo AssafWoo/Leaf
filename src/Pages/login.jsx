@@ -61,6 +61,7 @@ const Login = () => {
 				"http://localhost:3001/backoffice/auth/login",
 				{ email: email, password: password }
 			);
+			console.log(data.data.data.accessKey);
 			toast({
 				title: "Welcome back",
 				description: "",
@@ -75,8 +76,8 @@ const Login = () => {
 		} catch (e) {
 			dispatchFunction({ type: "error", value: e });
 			toast({
-				title: e?.response?.data.message,
-				description: `Error code: ${e.response.data.statusCode}`,
+				title: e?.response?.data?.message,
+				description: `Error code: ${e?.response?.data?.statusCode && "ERROR"}`,
 				status: "error",
 				duration: 1000,
 				isClosable: true,

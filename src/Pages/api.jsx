@@ -11,8 +11,8 @@ const APICallsComponent = () => {
 
 	return (
 		<Flex>
-			<Heading {...SubHeader}>Api Keys</Heading>
-			{userState.accessKey ? (
+			<Heading {...SubHeader}>Api Keys</Heading>!
+			{userState.billing ? (
 				<>
 					<Parag style={{ color: "white" }}>Api keys unique for you</Parag>
 					<BoxSize FlexSize="5">Api keys, secret etc...</BoxSize>

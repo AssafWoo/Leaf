@@ -10,10 +10,10 @@ export function useGetPersistedToken(key) {
 	return persistedExisitingToken ? true : false;
 }
 
-export function usePersistedReducer(
-	[state, dispatch],
-	key = "userInformation"
-) {
-	useEffect(() => localStorage.setItem(key, JSON.stringify(state)), [state]);
+export function usePersistedReducer([state, dispatch], key = "userInfo") {
+	useEffect(
+		() => localStorage.setItem(key, JSON.stringify(state)),
+		[state, key]
+	);
 	return [state, dispatch];
 }

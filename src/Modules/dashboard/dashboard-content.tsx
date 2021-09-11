@@ -23,13 +23,12 @@ interface Iprops {
 	tableData: Array<any>;
 }
 
-const DashboardContent = ({
-	user,
-	selected,
-	handleToggleFilter,
-	dashboardData,
-	tableData,
-}: Iprops) => {
+const DashboardContent = (props: Iprops) => {
+	const {	user,
+		selected,
+		handleToggleFilter,
+		dashboardData,
+		tableData} = props;
 	const CurrentTime = useGetTime();
 	const screenSize = useScreenSize();
 	const myStackedRef = useRef();
@@ -50,7 +49,7 @@ const DashboardContent = ({
 							fontWeight="300"
 							color="white"
 						>
-							Howdy {user?.userData?.name}, {CurrentTime}
+							Howdy {user.account_owner}, {CurrentTime}
 						</Heading>
 						<p style={{ textAlign: "left", color: "white" }}>
 							Your'e a unique Leaf
@@ -80,7 +79,7 @@ const DashboardContent = ({
 							style={{ border: `2px solid ${DarkTheme}`}}
 						>
 							<Heading fontWeight="300" textAlign="center" fontSize="3rem">
-								{user?.userData?.treesEquilavant}
+							{user.trees_saved}
 							</Heading>
 							<Parag style={{ textAlign: "center" }}>
 								Equivalent number of trees planted
@@ -92,7 +91,7 @@ const DashboardContent = ({
 							style={{ border: `2px solid ${DarkTheme}`, background:MainGreen, ShadowEffect }}
 						>
 							<Heading fontWeight="300" textAlign="center" fontSize="3rem">
-								{user?.userData?.totalCO2Saved}
+								{user.total_co2_saved_in_tons}
 							</Heading>
 							<Parag style={{ textAlign: "center" }}>
 								Kg of CO2 saved since beggining
@@ -104,7 +103,7 @@ const DashboardContent = ({
 							style={{ border: `2px solid ${DarkTheme}`, ShadowEffect }}
 						>
 							<Heading fontWeight="300" textAlign="center" fontSize="3rem">
-								{user?.userData?.credits}$
+								{user?.credits}$
 							</Heading>
 							<Parag style={{ textAlign: "center" }}>
 								Donated since beggining

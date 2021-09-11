@@ -1,19 +1,15 @@
 export interface UserType {
-    userData: {
-        name:string;
+        account_owner:string;
         email:string;
-        company:string;
+        company_name:string;
         credits:number;
-        profileImage:string;
-        accountOwner:string;
-        totalCO2Saved:number;
-        treesEquilavant:number;
+        trees_saved:number;
+        total_co2_saved_in_tons:number;
         siteURL:string;
         accessKey:string;
         address:{
             country:string
         };
-    };
     loggedIn:boolean;
     authKey:string;
     error:any;

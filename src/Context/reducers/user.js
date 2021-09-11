@@ -14,26 +14,26 @@ const reducer = (state, action) => {
 		case LOAD_USER_SUCCESS:
 			return { user: action.payload, error: null };
 		case USER_LOGIN:
-			localStorage.setItem("id", action.payload);
+			localStorage.setItem("token", action.payload);
 			return {
 				...state,
 				loggedIn: true,
 				authKey: action.payload,
 			};
 		case SET_USER:
-			const globalStore = JSON.parse(localStorage.getItem("userInformation"));
+			const globalStore = JSON.parse(localStorage.getItem("userInfo"));
 			return {
 				...state,
 				userData: {
 					...state.userData,
-					accountOwner: 'globalStore.username',
-					name: 'globalStore.username',
-					company: 'globalStore.merchant.name',
-					email: 'globalStore.email',
-					accessKey: 'globalStore.accessKey',
-					siteUrl: 'globalStore.site_URL',
+					// accountOwner: globalStore.data.account_owner,
+					account_owner: globalStore.account_owner,
+					company: globalStore.company_name,
+					email: globalStore.email,
+					billing: globalStore.billing,
+					siteUrl: "globalStore.data.site_URL",
 					address: {
-						country: 'globalStore.merchant.addressLocation.country',
+						country: globalStore.address.country,
 					},
 				},
 				loggedIn: true,
@@ -41,7 +41,9 @@ const reducer = (state, action) => {
 		case PUT_USER:
 			return { user: action.payload, error: null };
 		case LOG_OUT_USER:
-			localStorage.removeItem("id");
+			localStorage.removeItem("token");
+			localStorage.removeItem("userInfo");
+
 			return {
 				...state,
 				error: null,

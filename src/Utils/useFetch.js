@@ -4,7 +4,7 @@ import { useToast } from "@chakra-ui/toast";
 import { getToken } from "./getToken";
 import axios from "axios";
 
-const fetchData = async (URL) => {
+export const fetchData = async (URL) => {
 	let validToken = getToken();
 	let config = {
 		headers: {
@@ -25,7 +25,7 @@ const useFetch = (queryURL, queryName) => {
 		{
 			refetchAllOnWindowFocus: true,
 			retry: 2,
-			// refetchInterval: 30000,
+			refetchInterval: 30000,
 		}
 	);
 
