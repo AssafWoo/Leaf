@@ -119,7 +119,7 @@ const CompanyDetails = (props) => {
 						<Flex>
 							<BoxSize flexSize="1" isInvisible={true}>
 								{inputFields.map((input) => (
-									<Field>
+									<Field key={input.id}>
 										{({ field, form }) => (
 											<FormControl id={input.id}>
 												<FormLabel
@@ -148,7 +148,7 @@ const CompanyDetails = (props) => {
 							</BoxSize>
 							<BoxSize flexSize="1" isInvisible={true}>
 								{secondaryInputFields.map((input) => (
-									<Field>
+									<Field key={input.id}>
 										{({ field, form }) => (
 											<FormControl id={input.id}>
 												<FormLabel

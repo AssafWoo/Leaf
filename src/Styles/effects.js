@@ -12,7 +12,7 @@ import {
 } from "./colors";
 
 export const ShadowEffect = `
-    box-shadow: 10px 10px 14px -12px rgba(0,0,0,0.1);
+    box-shadow: 10px 10px 14px -12px rgba(0,0,0,0.1)
 `;
 export const Ripple = `
     animation: at-ripple 1s linear infinite;

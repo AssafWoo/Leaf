@@ -20,6 +20,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { getToken } from "../../Utils/getToken";
+import { ItemsNav } from "../../Components/Side_bar/style";
 
 const ProjectsMarketplace = () => {
 	const { projectsState, projectsDispatch } = useContext(GlobalContext);
@@ -114,7 +115,12 @@ const ProjectsMarketplace = () => {
 				{projects ? (
 					<>
 						{projects?.map((item) => (
-							<OffsetCard addFavorite={addFavorite} item={item} isFav={false} />
+							<OffsetCard
+								key={item.id}
+								addFavorite={addFavorite}
+								item={item}
+								isFav={false}
+							/>
 						))}
 					</>
 				) : (
@@ -154,6 +160,7 @@ const ProjectsMarketplace = () => {
 					<>
 						{projectsState.favoriteProjects.map((item) => (
 							<OffsetCard
+								key={item.id}
 								removeFavorite={removeFavorite}
 								item={item}
 								isFav={true}

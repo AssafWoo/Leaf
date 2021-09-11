@@ -2,14 +2,14 @@ import { AchievmentCardWrapper } from "./achievment_card_style";
 
 const AchievmentCard = ({ item }) => {
 	return (
-		<AchievmentCardWrapper>
-			<div class="container">
-				<div class="card">
-					<div class="face face1">
-						<div class="content">{item.icon}</div>
+		<AchievmentCardWrapper key={item.header}>
+			<div className="container">
+				<div className="card">
+					<div className="face face1">
+						<div className="content">{item.icon}</div>
 					</div>
-					<div class="face face2">
-						<div class="content">
+					<div className="face face2">
+						<div className="content">
 							<h4>{item.header}</h4>
 							<p>{item.content}</p>
 						</div>

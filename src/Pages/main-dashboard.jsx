@@ -38,6 +38,8 @@ const Dashboard = () => {
 	const transactionsResponseData = transactionsResponse.data;
 
 	// on mount and on dependencies, setting transactions data, user information and such
+	// should we put the information in context or leave it as is?
+	// the problem is that if we put in context it wont render after fetching the data
 	useEffect(() => {
 		setUserData(userResponseData);
 		setTransactionsData(transactionsResponseData);

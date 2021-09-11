@@ -10,7 +10,7 @@ const Insights = () => {
 			<Heading {...SubHeader}>Your Achievments</Heading>
 			<BreakLine />
 			{mockAchievments.map((item) => (
-				<BoxSize isInvisible={true} boxSize="3">
+				<BoxSize isInvisible={true} boxSize="3" key={item.header}>
 					<AchievmentCard item={item} />
 				</BoxSize>
 			))}
