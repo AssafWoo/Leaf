@@ -71,6 +71,7 @@ const Login = () => {
 			});
 			dispatchFunction({ type: "success" });
 			const accessToken = data.data.data.accessKey;
+			console.log(accessToken);
 			userDispatch(loginUser(accessToken));
 			history.push("/dashboard");
 		} catch (e) {

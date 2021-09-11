@@ -27,7 +27,7 @@ const Settings = () => {
 	const history = useHistory();
 	const [indexToShow, setIndexToShow] = useState(0);
 	const { userState, userDispatch } = useContext(GlobalContext);
-	const [userData, setUserData] = useState(userState);
+	const [userData, setUserData] = useState();
 
 	const handleSubmit = ({ status }) => {
 		setStatus(status);

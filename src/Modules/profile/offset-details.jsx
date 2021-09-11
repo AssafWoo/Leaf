@@ -23,7 +23,7 @@ import { useToast } from "@chakra-ui/react";
 const OffsetDetails = () => {
 	const [editable, setEditble] = useState(false);
 	const [editableString, setEditbleString] = useState("Edit");
-	const { projectsState, _ } = useContext(GlobalContext);
+	const { projectsState } = useContext(GlobalContext);
 
 	const toast = useToast();
 

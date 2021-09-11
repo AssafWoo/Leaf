@@ -21,7 +21,7 @@ const Dashboard = () => {
 		transactionsState.allTransactions
 	);
 
-	const [userData, setUserData] = useState(userState);
+	const [userData, setUserData] = useState();
 
 	// using reactquery fetch to get user data from server
 	const userResponse = useFetch(
