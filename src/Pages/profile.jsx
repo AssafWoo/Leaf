@@ -1,6 +1,6 @@
 import { BoxSize, BreakLine, Flex, Parag, SubHeader } from "../Styles/styles";
 import CompanyDetails from "../Modules/profile/company-details";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Heading } from "@chakra-ui/layout";
 import { TabList, Tabs, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import PaymentForm from "../Modules/billing/billing";
@@ -10,6 +10,8 @@ import AccountDetails from "../Modules/profile/account-details";
 import { useHistory } from "react-router";
 import useFetch from "../Utils/useFetch";
 import { Spinner } from "@chakra-ui/spinner";
+import { GlobalContext } from "../Context/global/global-context";
+import { setUser } from "../Context/actions/user";
 
 const tabsStyle = {
 	color: "white",
@@ -24,6 +26,8 @@ const Settings = () => {
 	const [status, setStatus] = useState("");
 	const history = useHistory();
 	const [indexToShow, setIndexToShow] = useState(0);
+	const { userState, userDispatch } = useContext(GlobalContext);
+	const [userData, setUserData] = useState(userState);
 
 	const handleSubmit = ({ status }) => {
 		setStatus(status);
@@ -34,7 +38,12 @@ const Settings = () => {
 		"http://localhost:3001/backoffice/profile",
 		"UserInfo"
 	);
-	const userData = userResponse.data;
+
+	// on mount and on dependencies, setting user information and such
+	useEffect(() => {
+		setUserData(userResponse.data);
+		userDispatch(setUser(userResponse.data));
+	}, [userResponse.data]);
 
 	return (
 		<Flex>

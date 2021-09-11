@@ -6,13 +6,19 @@ import { useState } from "react";
 import { setTransactions } from "../Context/actions/transactions";
 import useFetch from "../Utils/useFetch";
 import { Spinner } from "@chakra-ui/spinner";
+import { setUser } from "../Context/actions/user";
 
 const Dashboard = () => {
 	const { achievmentsState } = useContext(GlobalContext);
 	const { transactionsState, transactionsDispatch } = useContext(GlobalContext);
+	const { userState, userDispatch } = useContext(GlobalContext);
+
 	const [transactionsData, setTransactionsData] = useState(
 		transactionsState.allTransactions
 	);
+
+	const [userData, setUserData] = useState(userState);
+
 	const [selected, setSelected] = useState(true);
 	const [dashboardData, setDashboardData] = useState(
 		achievmentsState.weeklyAchievments.co2Emissions
@@ -23,7 +29,6 @@ const Dashboard = () => {
 		"http://localhost:3001/backoffice/profile",
 		"UserInfo"
 	);
-	const userData = userResponse.data;
 
 	// using reactquery fetch to get transactions data from server
 	const transactionsResponse = useFetch(
@@ -34,9 +39,11 @@ const Dashboard = () => {
 
 	// on mount and on dependencies, setting transactions data, user information and such
 	useEffect(() => {
+		setUserData(userResponse.data);
 		setTransactionsData(data);
 		transactionsDispatch(setTransactions(data));
-	}, [data, transactionsDispatch]);
+		userDispatch(setUser(userResponse.data));
+	}, [data, transactionsDispatch, userResponse.data]);
 
 	const handleToggleFilter = () => {
 		if (selected) {

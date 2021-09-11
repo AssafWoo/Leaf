@@ -21,20 +21,16 @@ const reducer = (state, action) => {
 				authKey: action.payload,
 			};
 		case SET_USER:
-			const globalStore = JSON.parse(localStorage.getItem("userInfo"));
+			console.log(action.payload);
 			return {
 				...state,
-				userData: {
-					...state.userData,
-					// accountOwner: globalStore.data.account_owner,
-					account_owner: globalStore.account_owner,
-					company: globalStore.company_name,
-					email: globalStore.email,
-					billing: globalStore.billing,
-					siteUrl: "globalStore.data.site_URL",
-					address: {
-						country: globalStore.address.country,
-					},
+				account_owner: action.payload?.account_owner,
+				company: action.payload?.company_name,
+				email: action.payload?.email,
+				billing: action.payload?.billing,
+				siteUrl: "action.payload.data.site_URL",
+				address: {
+					country: action.payload?.address.country,
 				},
 				loggedIn: true,
 			};
@@ -42,7 +38,6 @@ const reducer = (state, action) => {
 			return { user: action.payload, error: null };
 		case LOG_OUT_USER:
 			localStorage.removeItem("token");
-			localStorage.removeItem("userInfo");
 
 			return {
 				...state,
