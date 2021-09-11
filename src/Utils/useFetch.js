@@ -3,6 +3,7 @@ import { Spinner } from "@chakra-ui/spinner";
 import { useToast } from "@chakra-ui/toast";
 import { getToken } from "./getToken";
 import axios from "axios";
+import { useState } from "react";
 
 export const fetchData = async (URL) => {
 	let validToken = getToken();
@@ -24,7 +25,7 @@ const useFetch = (queryURL, queryName) => {
 		() => fetchData(queryURL),
 		{
 			refetchAllOnWindowFocus: true,
-			retry: 2,
+			retry: 1,
 			refetchInterval: 30000,
 		}
 	);
@@ -41,8 +42,7 @@ const useFetch = (queryURL, queryName) => {
 			isClosable: true,
 		});
 	}
-
-	return { data };
+	return { isLoading, isError, error, data };
 };
 
 export default useFetch;

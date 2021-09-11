@@ -34,16 +34,18 @@ const Settings = () => {
 	};
 
 	// using reactquery fetch to get user data from server
+	// using reactquery fetch to get user data from server
 	const userResponse = useFetch(
 		"http://localhost:3001/backoffice/profile",
 		"UserInfo"
 	);
+	const userResponseData = userResponse.data;
 
 	// on mount and on dependencies, setting user information and such
 	useEffect(() => {
-		setUserData(userResponse.data);
-		userDispatch(setUser(userResponse.data));
-	}, [userResponse.data]);
+		userDispatch(setUser(userResponseData));
+		setUserData(userResponseData);
+	}, [userDispatch, userResponseData]);
 
 	return (
 		<Flex>

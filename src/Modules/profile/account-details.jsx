@@ -12,7 +12,8 @@ import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { useState } from "react";
 import { Tag, useToast } from "@chakra-ui/react";
 
-const AccountDetails = ({ accountDetails }) => {
+const AccountDetails = (props) => {
+	const { accountDetails } = props;
 	const [editable, setEditble] = useState(false);
 	const [editableString, setEditbleString] = useState("Edit");
 	const toast = useToast();
@@ -50,7 +51,7 @@ const AccountDetails = ({ accountDetails }) => {
 		<>
 			<Formik
 				initialValues={{
-					userName: accountDetails.name,
+					userName: accountDetails?.account_owner,
 					// email: accountDetails.email,
 					// password: "",
 				}}

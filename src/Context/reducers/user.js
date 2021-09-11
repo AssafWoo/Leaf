@@ -21,10 +21,11 @@ const reducer = (state, action) => {
 				authKey: action.payload,
 			};
 		case SET_USER:
+			console.log("re-render");
 			console.log(action.payload);
 			return {
 				...state,
-				account_owner: action.payload?.account_owner,
+				account_owner: "Assaf",
 				company: action.payload?.company_name,
 				email: action.payload?.email,
 				billing: action.payload?.billing,

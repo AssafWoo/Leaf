@@ -12,6 +12,10 @@ const Dashboard = () => {
 	const { achievmentsState } = useContext(GlobalContext);
 	const { transactionsState, transactionsDispatch } = useContext(GlobalContext);
 	const { userState, userDispatch } = useContext(GlobalContext);
+	const [selected, setSelected] = useState(true);
+	const [dashboardData, setDashboardData] = useState(
+		achievmentsState.weeklyAchievments.co2Emissions
+	);
 
 	const [transactionsData, setTransactionsData] = useState(
 		transactionsState.allTransactions
@@ -19,31 +23,32 @@ const Dashboard = () => {
 
 	const [userData, setUserData] = useState(userState);
 
-	const [selected, setSelected] = useState(true);
-	const [dashboardData, setDashboardData] = useState(
-		achievmentsState.weeklyAchievments.co2Emissions
-	);
-
 	// using reactquery fetch to get user data from server
 	const userResponse = useFetch(
 		"http://localhost:3001/backoffice/profile",
 		"UserInfo"
 	);
+	const userResponseData = userResponse.data;
 
 	// using reactquery fetch to get transactions data from server
 	const transactionsResponse = useFetch(
 		"http://localhost:3001/backoffice/transactions",
 		"Transactions"
 	);
-	const { data } = transactionsResponse;
+	const transactionsResponseData = transactionsResponse.data;
 
 	// on mount and on dependencies, setting transactions data, user information and such
 	useEffect(() => {
-		setUserData(userResponse.data);
-		setTransactionsData(data);
-		transactionsDispatch(setTransactions(data));
-		userDispatch(setUser(userResponse.data));
-	}, [data, transactionsDispatch, userResponse.data]);
+		setUserData(userResponseData);
+		setTransactionsData(transactionsResponseData);
+		transactionsDispatch(setTransactions(transactionsResponseData));
+		userDispatch(setUser(userResponseData));
+	}, [
+		transactionsDispatch,
+		transactionsResponseData,
+		userDispatch,
+		userResponseData,
+	]);
 
 	const handleToggleFilter = () => {
 		if (selected) {

@@ -19,16 +19,19 @@ import { useToast } from "@chakra-ui/react";
 import AuthMyInput from "../../Utils/authInput";
 
 const inputFields = [
-	{ name: "Company Name", id: "name" },
-	{ name: "Company Address", id: "companyAddress" },
+	{ name: "Company Name", id: "companyName" },
+	{ name: "Company Country", id: "companyCountry" },
 ];
 const secondaryInputFields = [
 	{ name: "Email", id: "email" },
 	{ name: "Site URL", id: "siteURL" },
 ];
-const CompanyDetails = ({ companyDetails }) => {
+const CompanyDetails = (props) => {
+	const { companyDetails } = props;
 	const [editable, setEditble] = useState(false);
 	const toast = useToast();
+
+	console.log(companyDetails.company_name);
 
 	return (
 		<>
@@ -51,16 +54,16 @@ const CompanyDetails = ({ companyDetails }) => {
 			)}
 			<Formik
 				initialValues={{
-					name: companyDetails.company,
-					companyAddress: companyDetails.address.country,
-					email: companyDetails.email,
-					siteURL: companyDetails.siteURL,
+					companyName: companyDetails?.company_name,
+					companyCountry: companyDetails?.address.country,
+					email: companyDetails?.email,
+					siteURL: companyDetails?.siteURL,
 				}}
 				onSubmit={async (data, { setSubmitting }) => {
 					console.log("im clicked");
 					if (
-						AuthMyInput(data.name) &&
-						AuthMyInput(data.companyAddress) &&
+						AuthMyInput(data.companyName) &&
+						AuthMyInput(data.country) &&
 						AuthMyInput(data.email) &&
 						AuthMyInput(data.siteURL)
 					) {
