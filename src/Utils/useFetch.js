@@ -12,7 +12,7 @@ export const fetchData = async (URL) => {
 		},
 	};
 	const response = await axios.get(URL, config);
-	const data = await response.data.data;
+	const data = await response.data;
 	return data;
 };
 

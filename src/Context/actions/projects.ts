@@ -6,6 +6,7 @@ export const SET_PROJECTS = '[projects] set';
 export const SET_FAVORITE_PROJECT ='[projects] set favorite';
 export const ADD_FAVORITE_PROJECT ='[projects] Add favorite';
 export const REMOVE_FAVORITE_PROJECT ='[projects] remove favorite';
+export const SET_FAVORITES = '[projects] set favorites'
 
 export const loadProjects = {
     type:LOAD_PROJECTS,
@@ -25,6 +26,11 @@ export const setProjects = (projects:Array<ProjectType>) => ({
     type:SET_PROJECTS,
     payload:projects
 });
+export const setFavorites = (projects:Array<ProjectType>) => ({
+    type:SET_FAVORITES,
+    payload:projects
+});
+
 export const setFavoriteProject = (project:any) => ({
     type:SET_FAVORITE_PROJECT,
     payload:project

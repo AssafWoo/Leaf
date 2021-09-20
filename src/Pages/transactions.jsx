@@ -26,14 +26,12 @@ const TransactionsComponent = () => {
 		"http://localhost:3001/backoffice/transactions",
 		"Transactions"
 	);
-	const { data } = transactionsResponse;
+	const transactionFetchData = transactionsResponse?.data;
 
 	useEffect(() => {
-		setTransactionsData(data);
-		console.log(transactionsData);
-
-		transactionsDispatch(setTransactions(data));
-	}, [data, transactionsDispatch]);
+		setTransactionsData(transactionFetchData?.data);
+		transactionsDispatch(setTransactions(transactionFetchData?.data));
+	}, [transactionFetchData?.data, transactionsData, transactionsDispatch]);
 
 	const handleClick = (item) => {
 		console.log(`get request for ${item} items`);
@@ -74,7 +72,7 @@ const TransactionsComponent = () => {
 								/>
 							</>
 						}
-						tableData={mockTransactionsData}
+						tableData={transactionsState.allTransactions}
 						columnsType={transactionsColumns}
 					/>
 				) : (

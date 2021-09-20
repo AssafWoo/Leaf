@@ -28,14 +28,14 @@ const Dashboard = () => {
 		"http://localhost:3001/backoffice/profile",
 		"UserInfo"
 	);
-	const userResponseData = userResponse.data;
+	const userResponseData = userResponse?.data?.data;
 
 	// using reactquery fetch to get transactions data from server
 	const transactionsResponse = useFetch(
 		"http://localhost:3001/backoffice/transactions",
 		"Transactions"
 	);
-	const transactionsResponseData = transactionsResponse.data;
+	const transactionsResponseData = transactionsResponse?.data?.data;
 
 	// on mount and on dependencies, setting transactions data, user information and such
 	// should we put the information in context or leave it as is?
