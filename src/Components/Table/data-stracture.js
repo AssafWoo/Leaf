@@ -4,6 +4,10 @@ import { FaTrash, FaEye } from "react-icons/fa";
 import { Flex } from "@chakra-ui/react";
 import { LightBlue, MainGreen, MainRed, MainYellow } from "../../Styles/colors";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
+
+//console.log(`${date.getDate()}, ${date.getMonth() +1 }, ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`)
+// const date = new Date(formated_Date) // formated_Date - SDK returned date
 
 export const transactionsColumns = [
 	{
@@ -12,7 +16,8 @@ export const transactionsColumns = [
 		sortable: true,
 		cell: (row) => (
 			<ModalComponent
-				openButtonContent={row.created_at}
+				openButtonContent={dayjs(row.created_at).format(`DD/MM/YYYY - HH:mm`)} // the hour is 3 hours ahead
+				// openButtonContent={row.created_at.toLocaleString("pt-BR")}
 				item={row}
 				content={ModalContent(row)}
 				goToActionButton="empty"
@@ -25,20 +30,30 @@ export const transactionsColumns = [
 		selector: "status",
 		sortable: true,
 		cell: (row) => {
-			if (row.status === "Retired") {
+			if (row.transaction_status === "CLE") {
 				return (
 					<ModalComponent
-						openButtonContent={<p style={{ color: MainGreen }}>{row.status}</p>}
+						openButtonContent={<p style={{ color: MainGreen }}>Retired</p>}
 						item={row}
 						content={ModalContent(row)}
 						goToActionButton="empty"
 					/>
 				);
 			}
-			if (row.status === "Placed") {
+			if (row.transaction_status === "ACT") {
 				return (
 					<ModalComponent
-						openButtonContent={<p style={{ color: LightBlue }}>{row.status}</p>}
+						openButtonContent={<p style={{ color: LightBlue }}>Placed</p>}
+						item={row}
+						content={ModalContent(row)}
+						goToActionButton="empty"
+					/>
+				);
+			}
+			if (row.transaction_status === "REJ") {
+				return (
+					<ModalComponent
+						openButtonContent={<p style={{ color: MainRed }}>Rejected</p>}
 						item={row}
 						content={ModalContent(row)}
 						goToActionButton="empty"
@@ -47,7 +62,7 @@ export const transactionsColumns = [
 			}
 			return (
 				<ModalComponent
-					openButtonContent={<p style={{ color: MainYellow }}>{row.status}</p>}
+					openButtonContent={<p style={{ color: MainYellow }}>Processing</p>}
 					item={row}
 					content={ModalContent(row)}
 					goToActionButton="empty"
@@ -61,7 +76,7 @@ export const transactionsColumns = [
 		sortable: true,
 		cell: (row) => (
 			<ModalComponent
-				openButtonContent={`${row.amountCo2} kg`}
+				openButtonContent={`${row.weight} kg`}
 				item={row}
 				content={ModalContent(row)}
 				goToActionButton="empty"

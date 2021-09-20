@@ -3,21 +3,22 @@ import { Heading } from "@chakra-ui/layout";
 import { BoxSize, BreakLine, Flex, SubHeader } from "../Styles/styles";
 import TableTemplate from "../Components/Table/table-template";
 import { transactionsColumns } from "../Components/Table/data-stracture";
-import { DarkerTheme, DarkTheme } from "../Styles/colors";
+import { DarkerTheme, DarkTheme, MainRed } from "../Styles/colors";
 import { GlobalContext } from "../Context/global/global-context";
 import useFetch from "../Utils/useFetch";
 import { setTransactions } from "../Context/actions/transactions";
 import { Spinner } from "@chakra-ui/react";
-import { mockTransactionsData } from "../Mocks/transactions-mock";
 import FilterCard from "../Components/Cards/filter_cards";
-import { ImEarth } from "react-icons/im";
-import { BiLoader } from "react-icons/bi";
+import { ImCancelCircle, ImEarth } from "react-icons/im";
 import { FaFly } from "react-icons/fa";
-import { LightBlue, MainGreen, MainYellow } from "../Styles/colors";
+import { LightBlue, MainGreen } from "../Styles/colors";
 
 const TransactionsComponent = () => {
 	const { transactionsState, transactionsDispatch } = useContext(GlobalContext);
 	const [transactionsData, setTransactionsData] = useState(
+		transactionsState.allTransactions
+	);
+	const [displayedTransactions, setDisplayedTransactions] = useState(
 		transactionsState.allTransactions
 	);
 
@@ -30,11 +31,20 @@ const TransactionsComponent = () => {
 
 	useEffect(() => {
 		setTransactionsData(transactionFetchData?.data);
+		setDisplayedTransactions(transactionFetchData?.data);
 		transactionsDispatch(setTransactions(transactionFetchData?.data));
 	}, [transactionFetchData?.data, transactionsData, transactionsDispatch]);
 
 	const handleClick = (item) => {
-		console.log(`get request for ${item} items`);
+		if (item === "Rejected") {
+			setDisplayedTransactions(transactionsState.rejectedTransactions);
+		} else if (item === "Active") {
+			setDisplayedTransactions(transactionsState.activeTransactions);
+		} else if (item === "Retired") {
+			setDisplayedTransactions(transactionsState.clearedTransactions);
+		} else {
+			setDisplayedTransactions(transactionsState.allTransactions);
+		}
 	};
 
 	return (
@@ -57,22 +67,25 @@ const TransactionsComponent = () => {
 							<>
 								<FilterCard
 									icon={<FaFly size="2rem" color={LightBlue} />}
-									text="Placed"
+									text="Active"
 									handleClick={handleClick}
+									number={transactionsState.activeTransactions.length}
 								/>
 								<FilterCard
-									icon={<BiLoader size="2rem" color={MainYellow} />}
-									text="Proccessing"
+									icon={<ImCancelCircle size="2rem" color={MainRed} />}
+									text="Rejected"
 									handleClick={handleClick}
+									number={transactionsState.rejectedTransactions.length}
 								/>
 								<FilterCard
 									icon={<ImEarth size="2rem" color={MainGreen} />}
 									text="Retired"
 									handleClick={handleClick}
+									number={transactionsState.clearedTransactions.length}
 								/>
 							</>
 						}
-						tableData={transactionsState.allTransactions}
+						tableData={displayedTransactions}
 						columnsType={transactionsColumns}
 					/>
 				) : (

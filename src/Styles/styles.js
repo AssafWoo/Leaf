@@ -2,7 +2,6 @@ import styled from "styled-components";
 import {
 	DarkerTheme,
 	DarkTheme,
-	LeafRed,
 	LightBlue,
 	MainGreen,
 	MainRed,

@@ -22,7 +22,7 @@ export const customStyles = {
 	},
 	nav: {
 		style: {
-			background: "#0d1117 !important",
+			background: "white !important",
 			color: "white",
 		},
 	},
@@ -43,6 +43,17 @@ export const TableWrapper = styled.div`
 	background: ${DarkerTheme} !important;
 	border: none;
 	width: 100%;
+
+	button {
+		background: white;
+		margin: 0.1rem;
+		&:hover {
+			background: white !important;
+		}
+		&:focus {
+			background: white !important;
+		}
+	}
 
 	.kVlSIs {
 		background: transparent;
@@ -73,9 +84,6 @@ export const TableWrapper = styled.div`
 		#search {
 			cursor: text;
 			color: black;
-		}
-		button {
-			background: ${MainRed};
 		}
 	}
 	.rdt_TableCol_Sortable {
