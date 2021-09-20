@@ -70,7 +70,7 @@ const AccountDetails = (props) => {
 							padding: "1rem",
 						}}
 					>
-						<Button
+						{/* <Button
 							float="right"
 							type="submit"
 							bg={editableString === "Edit" ? LightBlue : MainGreen}
@@ -82,7 +82,7 @@ const AccountDetails = (props) => {
 						>
 							{" "}
 							{editableString}{" "}
-						</Button>
+						</Button> */}
 						<Flex>
 							<BoxSize flexSize="1" isInvisible={true}>
 								<Field>
@@ -121,12 +121,16 @@ const AccountDetails = (props) => {
 			<BreakLine />
 			<Flex>
 				<BoxSize isInvisible={false} flexSize="5">
-					<Parag>
+					{/* <Parag>
 						In order to change password, please click the button and a reset
 						email will be sent to your email
+					</Parag> */}
+					<Parag>
+						In order to change password, please sent us email and we'll get back
+						to you.
 					</Parag>
 					<BreakLine />
-					<Button colorScheme="blue"> Change password</Button>
+					{/* <Button colorScheme="blue"> Change password</Button> */}
 				</BoxSize>
 			</Flex>
 		</>

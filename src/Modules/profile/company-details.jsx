@@ -35,7 +35,7 @@ const CompanyDetails = (props) => {
 
 	return (
 		<>
-			{!editable ? (
+			{/* {!editable ? (
 				<Button
 					float="right"
 					bg={LightBlue}
@@ -51,7 +51,7 @@ const CompanyDetails = (props) => {
 				</Button>
 			) : (
 				""
-			)}
+			)} */}
 			<Formik
 				initialValues={{
 					companyName: companyDetails?.company_name,
@@ -99,7 +99,7 @@ const CompanyDetails = (props) => {
 							padding: "1rem",
 						}}
 					>
-						{editable ? (
+						{/* {editable ? (
 							<Button
 								float="right"
 								type="submit"
@@ -114,7 +114,7 @@ const CompanyDetails = (props) => {
 							</Button>
 						) : (
 							""
-						)}
+						)} */}
 
 						<Flex>
 							<BoxSize flexSize="1" isInvisible={true}>

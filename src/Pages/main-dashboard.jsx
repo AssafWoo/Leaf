@@ -42,7 +42,7 @@ const Dashboard = () => {
 	// the problem is that if we put in context it wont render after fetching the data
 	useEffect(() => {
 		setUserData(userResponseData);
-		setTransactionsData(transactionsResponseData);
+		setTransactionsData(transactionsResponseData?.slice(0, 5));
 		transactionsDispatch(setTransactions(transactionsResponseData));
 		userDispatch(setUser(userResponseData));
 	}, [
